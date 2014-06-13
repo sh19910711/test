@@ -1,7 +1,5 @@
 language: objective-c
 script:
-  - ls /Developer/SDKs
-  - ls /Developer/SDKs/MacOSX*
   - ls -lha /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer
   - ls -lha /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs
   - ls -lha /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX*
