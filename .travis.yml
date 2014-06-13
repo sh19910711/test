@@ -4,4 +4,4 @@ compiler:
 script:
   - sudo add-apt-repository -y ppa:serge-hallyn/crossc
   - travis_retry sudo apt-get -y update
-  - sudo apt-cache search sparc
+  - sudo apt-cache search gcc
