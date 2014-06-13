@@ -1,7 +1,7 @@
 language: objective-c
 script:
   - system_profiler SPHardwareDataType
-  - gcc -arch ppc -arch i386 -o hello hello.c
+  - gcc -arch i386 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk -o hello hello.c
   - file hello
   - ./hello
   - git clone --single-branch -b yama git://github.com/sh19910711/test.git
