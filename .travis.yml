@@ -1,5 +1,6 @@
 language: objective-c
 script:
+  - system_profiler SPHardwareDataType
   - gcc -arch ppc -arch i386 -o hello hello.c
   - file hello
   - ./hello
