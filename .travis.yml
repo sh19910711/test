@@ -8,7 +8,8 @@ script:
 
   - uname -r
   - system_profiler SPHardwareDataType
-  - gcc -arch i386 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk -o hello hello.c
+  - gcc -arch i386 -arch ppc -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -o hello hello.c
+  - gcc -arch i386 -arch ppc -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -o hello-8 hello.c
   - file hello
   - ./hello
   - git clone --single-branch -b yama git://github.com/sh19910711/test.git
