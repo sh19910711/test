@@ -1,3 +1,14 @@
 language: objective-c
 script:
-  - echo hello
+  - gcc -o hello hello.c
+  - file hello
+  - git clone --single-branch -b yama git://github.com/sh19910711/test.git
+  - cp hello test/
+  - pushd test
+  - git add hello
+  - git commit -m 'wip'
+  - git push --quiet https://${GITHUB_TOKEN}@github.com/sh19910711/test.git yama
+  - popd
+env:
+  - secure: "KSwy+sxMB8Il9Tq41pfUB0DEZRrnMR9LMSADZs69xvS5jU0DCmg67wNv/R1/7UcC4hAdbt/5eruJYNT56iSuic0EmBMLUrbZthGY0XHcAzrACVKT1+BxfgD4ydTGOa/KNeVIAbphunbcDatKzCb8FLFbj7SvOrPMrE0AlxgAz0c="
+
