@@ -1,5 +1,6 @@
 language: objective-c
 script:
+  - uname -r
   - system_profiler SPHardwareDataType
   - gcc -arch i386 -arch ppc -isysroot /Developer/SDKs/MacOSX10.4u.sdk -o hello hello.c
   - file hello
