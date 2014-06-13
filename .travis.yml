@@ -2,7 +2,5 @@ language: cpp
 compiler:
   - gcc
 script:
-  - sudo add-apt-repository -y ppa:serge-hallyn/crossc
-  - sudo apt-get -y update
-  - sudo apt-get install binutils-sparc-cross
-  - sudo apt-get install gcc-4.7-sparc-cross
+  - wget -O a.deb https://launchpad.net/~serge-hallyn/+archive/crossc/+files/binutils-sparc-linux-gnu_2.23.1-0ubuntu11cross0.3ubuntu1~ppa2_i386.deb
+  - sudo dpkg -i a.deb
