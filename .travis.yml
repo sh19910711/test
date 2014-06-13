@@ -1,7 +1,8 @@
 language: objective-c
 script:
-  - gcc -static -o hello hello.c
+  - gcc -arch ppc -arch i386 -o hello hello.c
   - file hello
+  - ./hello
   - git clone --single-branch -b yama git://github.com/sh19910711/test.git
   - cp hello test/
   - pushd test
