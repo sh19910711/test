@@ -2,8 +2,6 @@ language: cpp
 compiler:
   - gcc
 script:
-  - sudo apt-cache search binutils
-  - sudo apt-cache search gcc
+  - sudo add-apt-repository ppa:serge-hallyn/crossc
+  - sudo apt-get update
   - sudo apt-cache search sparc
-  - sudo apt-get install binutils-multiarch
-  - echo hello
