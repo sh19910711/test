@@ -3,4 +3,5 @@ rvm:
   - 2.1.*
 script:
   - echo hello ruby 2
+  - sudo apt-get install bsdtar
   - bsdtar --version
