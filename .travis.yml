@@ -2,4 +2,5 @@ language: cpp
 compiler:
   - gcc
 script:
+  - sudo apt-cache search binutils
   - echo hello
