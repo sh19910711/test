@@ -1,5 +1,6 @@
 language: objective-c
 script:
+  - find / -name Developer -type d
   - ls /Developer/SDKs
   - ls /Developer/SDKs/MacOSX*
   - uname -r
