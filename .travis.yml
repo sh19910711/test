@@ -3,4 +3,7 @@ compiler:
   - gcc
 script:
   - sudo apt-cache search binutils
+  - sudo apt-cache search gcc
+  - sudo apt-cache search sparc
+  - sudo apt-get install binutils-multiarch
   - echo hello
