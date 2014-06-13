@@ -6,7 +6,7 @@ script:
 
   - uname -r
   - system_profiler SPHardwareDataType
-  - gcc -arch ppc -arch ppc64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -o hello hello.c
+  - gcc -arch i386 -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk -o hello hello.c
   - file hello
   - ./hello
   - git clone --single-branch -b yama git://github.com/sh19910711/test.git
