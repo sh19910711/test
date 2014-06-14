@@ -48,7 +48,7 @@ install:
           --enable-languages=c,c++ 
           --enable-multilib 
           --disable-bootstrap
-  - make -j 2 >make.log 2>&1
+  - make -j 2 2>&1 | tee make.log | sed '1~5n; d'
   - make install
   - git clone --single-branch -b tlog git://github.com/sh19910711/test.git repo
   - cp make.log repo/make-`date +"%s"`.log
