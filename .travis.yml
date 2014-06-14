@@ -5,10 +5,12 @@ before_install:
   - sudo apt-get update
   - wget http://ftp.gnu.org/gnu/gcc/gcc-4.9.0/gcc-4.9.0.tar.bz2
 install:
-  - tar xf gcc-4.9.0
+  - tar xf gcc-4.9.0.tar.bz2
   - cd gcc-4.9.0
   - ./configure --prefix=$HOME/local --disable-bootstrap
   - make -j 2
   - make install
 script:
   - ~/local/bin/gcc --version
+env:
+  - secure: "JR5edl1pvaV1CEePX3D79L3/4gsVYrkZybOjIxagV+IwFU9M80qsDHOr5n2XKZR6wAMjjzcY+J6agnQasgKReBpITpTcA0mBSKL/aNQDMb2yGACQIdEwIooxz8FGd6QQeqAOptQ3U6nK1JWv/2GtjBDiMli4tLykJ7nLrpI3oqk="
