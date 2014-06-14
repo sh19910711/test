@@ -44,10 +44,10 @@ before_install:
 install:
   - tar xf gcc-4.9.0.tar.bz2
   - cd gcc-4.9.0
-  - ./configure \\
-          --prefix=$HOME/local \\
-          --enable-languages=c,c++ \\
-          --enable-multilib \\
+  - ./configure \
+          --prefix=$HOME/local \
+          --enable-languages=c,c++ \
+          --enable-multilib \
           --disable-bootstrap
   - make -j 2
   - make install
