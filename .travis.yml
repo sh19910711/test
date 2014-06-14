@@ -3,6 +3,43 @@ compiler:
   - gcc
 before_install:
   - sudo apt-get update
+# sudo apt-get -yV install gcc-multilib g++-multilib gfortran-multilib
+# sudo apt-get -yV install make
+# sudo apt-get -yV install patch
+# sudo apt-get -yV install build-essential
+# sudo apt-get -yV install autoconf
+# sudo apt-get -yV install automake
+# sudo apt-get -yV install autogen
+# sudo apt-get -yV install binutils
+# sudo apt-get -yV install bison
+# sudo apt-get -yV install ccache
+# sudo apt-get -yV install chrpath
+# sudo apt-get -yV install dejagnu
+# sudo apt-get -yV install expect
+# sudo apt-get -yV install flex
+# sudo apt-get -yV install gawk
+# sudo apt-get -yV install g++-4.6-multilib 
+# sudo apt-get -yV install g++-multilib 
+# sudo apt-get -yV install gcc-4.6-multilib 
+# sudo apt-get -yV install gcc-multilib 
+# sudo apt-get -yV install lib32gcc1 
+# sudo apt-get -yV install lib32gomp1 
+# sudo apt-get -yV install lib32quadmath0 
+# sudo apt-get -yV install lib32stdc++6 
+# sudo apt-get -yV install libc6-dev-i386 
+# sudo apt-get -yV install libcloog-ppl-dev 
+# sudo apt-get -yV install libcloog-ppl0 
+# sudo apt-get -yV install libelfg0 
+# sudo apt-get -yV install libelfg0-dev 
+# sudo apt-get -yV install libmpc-dev 
+# sudo apt-get -yV install libtool
+# sudo apt-get -yV install openssl
+# sudo apt-get -yV install sharutils
+  - sudo apt-get -yV install libgmp3-devel
+  - sudo apt-get -yV install libmpfr-dev
+# sudo apt-get -yV install libppl0.11-dev
+# sudo apt-get -yV install libmpc-dev
+# sudo apt-get -yV install libisl-dev 
   - wget http://files.yomogimochi.com/sources/gcc-4.9.0.tar.bz2
 install:
   - tar xf gcc-4.9.0.tar.bz2
