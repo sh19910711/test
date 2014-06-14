@@ -2,8 +2,9 @@ language: cpp
 compiler:
   - gcc
 before_install:
+  - git config --global user.email "sh19910711+ynkkowrv0b14@gmail.com"
+  - git config --global user.name "Mr. Bot"
   - sudo apt-get update
-  - sudo apt-get -y install g++-multilib gcc-multilib libgmp3-dev libmpfr-dev libmpc-dev
   - wget http://files.yomogimochi.com/sources/gcc-4.9.0.tar.bz2
 # sudo apt-get -yV install gcc-multilib g++-multilib gfortran-multilib
 # sudo apt-get -yV install make
@@ -38,16 +39,25 @@ before_install:
 # sudo apt-get -yV install libppl0.11-dev
 # sudo apt-get -yV install libisl-dev 
 install:
+  - sudo apt-get -y install g++-multilib gcc-multilib libgmp3-dev libmpfr-dev libmpc-dev
   - tar xf gcc-4.9.0.tar.bz2
-  - cd gcc-4.9.0
+  - pushd gcc-4.9.0
   - ./configure 
           --prefix=$HOME/local 
           --with-system-zlib 
           --enable-languages=c,c++ 
           --enable-multilib 
           --disable-bootstrap
-  - make -j 2
+  - make -j 2 >make.log 2>&1
   - make install
+  - git clone --single-branch -b tlog git://github.com/sh19910711/test.git repo
+  - cp make.log repo/make-`date +"%s"`.log
+  - pushd repo
+  - git add make-*.log
+  - git commit -m 'add make log'
+  - git push --quiet https://${GITHUB_TOKEN}@github.com/sh19910711/test.git tlog
+  - popd
+  - popd
 script:
   - ~/local/bin/gcc --version
 env:
