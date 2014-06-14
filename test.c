@@ -1,2 +1,6 @@
-test
-test2
+#include <stdio.h>
+
+int main() {
+  puts("Hello, World");
+  return 0;
+}
