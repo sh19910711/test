@@ -35,8 +35,8 @@ before_install:
 # sudo apt-get -yV install libtool
 # sudo apt-get -yV install openssl
 # sudo apt-get -yV install sharutils
-  - sudo apt-get -yV install libgmp3-devel
-  - sudo apt-get -yV install libmpfr-dev
+  - sudo apt-get -y install libgmp3-devel
+  - sudo apt-get -y install libmpfr-dev
 # sudo apt-get -yV install libppl0.11-dev
 # sudo apt-get -yV install libmpc-dev
 # sudo apt-get -yV install libisl-dev 
