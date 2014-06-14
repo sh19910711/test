@@ -1,6 +1,14 @@
 language: cpp
 compiler:
   - gcc
+before_install:
+  - sudo apt-get update
+  - wget http://ftp.gnu.org/gnu/gcc/gcc-4.9.0/gcc-4.9.0.tar.bz2
+install:
+  - tar xf gcc-4.9.0
+  - cd gcc-4.9.0
+  - ./configure --prefix=$HOME/local --disable-bootstrap
+  - make -j 2
+  - make install
 script:
-  - wget -O a.deb https://launchpad.net/~serge-hallyn/+archive/crossc/+files/binutils-sparc-linux-gnu_2.23.1-0ubuntu11cross0.3ubuntu1~ppa2_i386.deb
-  - sudo dpkg -i a.deb
+  - ~/local/bin/gcc --version
