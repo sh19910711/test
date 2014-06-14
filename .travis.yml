@@ -46,6 +46,7 @@ install:
   - cd gcc-4.9.0
   - ./configure 
           --prefix=$HOME/local 
+          --with-system-zlib 
           --enable-languages=c,c++ 
           --enable-multilib 
           --disable-bootstrap
