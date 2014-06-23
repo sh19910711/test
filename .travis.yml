@@ -1,14 +1,12 @@
 language: cpp
 script:
-  - echo `git describe` > version
-  - echo `date +"%s"` > ほげふが
+  - echo `date +"%s"` > uploaded_file
 deploy:
   provider: releases
   api-key:
     secure: "aPVNljvop0ZMYB4JYNZNYV/NvarQglfleyD+w+lu0WpDkgGubmYZ8AKKWXunA38xZAVFeWx8cPu/3XOgzhZGR+G5x0KkIS1hnArYTTPiRP2YFnerWRsTcq6ug4OmcFuLFa/fdwK3wAp9QlcRetmDejV08cn9YAEDeRkAqsIrSGY="
   file:
-    - version
-    - ほげふが
+    - uploaded_file
   skip_cleanup: true
   on:
     tags: true
