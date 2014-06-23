@@ -1,11 +1,14 @@
 language: cpp
 script:
   - echo `git describe` > version
+  - echo `date +"%s"` > ほげふが
 deploy:
   provider: releases
   api-key:
     secure: "aPVNljvop0ZMYB4JYNZNYV/NvarQglfleyD+w+lu0WpDkgGubmYZ8AKKWXunA38xZAVFeWx8cPu/3XOgzhZGR+G5x0KkIS1hnArYTTPiRP2YFnerWRsTcq6ug4OmcFuLFa/fdwK3wAp9QlcRetmDejV08cn9YAEDeRkAqsIrSGY="
-  file: version
+  file:
+    - version
+    - ほげふが
   skip_cleanup: true
   on:
     tags: true
