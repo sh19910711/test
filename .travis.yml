@@ -1,3 +1,12 @@
-language: objective-c
+language: cpp
 script:
-  - echo hello
+  - echo `git describe` > version
+deploy:
+  provider: releases
+  api-key:
+    secure: "aPVNljvop0ZMYB4JYNZNYV/NvarQglfleyD+w+lu0WpDkgGubmYZ8AKKWXunA38xZAVFeWx8cPu/3XOgzhZGR+G5x0KkIS1hnArYTTPiRP2YFnerWRsTcq6ug4OmcFuLFa/fdwK3wAp9QlcRetmDejV08cn9YAEDeRkAqsIrSGY="
+  file: version
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
