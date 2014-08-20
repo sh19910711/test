@@ -1,51 +1,70 @@
 require "sinatra/rocketio"
+require "faye/websocket"
 
-class WebSocket
-  def initialize(app)
-    @app = app
-    players = {}
-    io = Sinatra::RocketIO
-
-    io.on :connect do |client|
-      s = client.session
-      players[s] = {
-        x: 0,
-        y: 0,
-      }
-      io.push :user_enter, {:s_id => s, :pos_json => players[s].to_json}
+module Middlewares
+  class WebSocket
+    def initialize(app)
+      @app = app
+      @clients = {}
+      @players = {}
     end
 
-    io.on :disconnect do |client|
-      s = client.session
-      io.push :user_exit, {:s_id => s}
+    def push(data)
+      @clients.each {|d, c| c.send(data.to_json) }
     end
 
-    io.on :move_up do |data, client|
-      s = client.session
-      players[s][:y] -= 1
-      io.push :update_pos, {:s_id => s, :pos_json => players[s].to_json}
-    end
+    def call(env)
+      if Faye::WebSocket.websocket?(env)
+        io_ws = Faye::WebSocket.new(env, nil, {ping: 15})
 
-    io.on :move_left do |data, client|
-      s = client.session
-      players[s][:x] -= 1
-      io.push :update_pos, {:s_id => s, :pos_json => players[s].to_json}
-    end
+        io_ws.on :open do |client|
+          @clients[io_ws.object_id] = io_ws.object_id
+          @players[io_ws.object_id] = {
+            x: 0,
+            y: 0,
+          }
+          push :user_enter, {:s_id => s, :pos_json => @players[s].to_json}
+        end
 
-    io.on :move_down do |data, client|
-      s = client.session
-      players[s][:y] += 1
-      io.push :update_pos, {:s_id => s, :pos_json => players[s].to_json}
-    end
+        io_ws.on :close do |client|
+          s = io_ws.object_id
+          push :user_exit, {:s_id => s}
+          @clients.delete s
+        end
 
-    io.on :move_right do |data, client|
-      s = client.session
-      players[s][:x] += 1
-      io.push :update_pos, {:s_id => s, :pos_json => players[s].to_json}
-    end
-  end
 
-  def call(env)
-    @app.call(env)
+        io_ws.on :move_up do |data, client|
+          s = io_ws.object_id
+          players[s][:y] -= 1
+          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
+        end
+
+        io_ws.on :move_left do |data, client|
+          s = io_ws.object_id
+          players[s][:x] -= 1
+          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
+        end
+
+        io_ws.on :move_down do |data, client|
+          s = io_ws.object_id
+          players[s][:y] += 1
+          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
+        end
+
+        io_ws.on :move_right do |data, client|
+          s = io_ws.object_id
+          players[s][:x] += 1
+          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
+        end
+
+        io_ws.rack_response
+      
+      else
+
+        @app.call(env)
+
+      end
+    end
   end
 end
+

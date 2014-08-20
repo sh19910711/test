@@ -1,6 +1,6 @@
 require_relative "app"
 require_relative "middlewares/websocket"
 
-use WebSocket
+use Middlewares::WebSocket
 run Application
 
