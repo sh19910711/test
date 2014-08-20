@@ -20,7 +20,7 @@ end
 
 map "/js/lib" do
   env = Sprockets::Environment.new
-  env.append_path "bower_components"
+  env.append_path "dist/js/lib/"
   run env
 end
 

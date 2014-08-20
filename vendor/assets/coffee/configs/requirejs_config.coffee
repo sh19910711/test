@@ -1,7 +1,7 @@
 @requirejs_paths = {
 
   # lib
-  "jquery": "/js/lib/jquery/dist/jquery.min"
+  "jquery": "/js/lib/jquery/jquery"
   "backbone": "/js/lib/backbone/backbone"
   "underscore": "/js/lib/underscore/underscore"
 
