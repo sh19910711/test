@@ -2,6 +2,7 @@ require_relative "app"
 require "sprockets"
 
 map "/" do
+  set :websocketio, :port => 5000
   run Application
 end
 
