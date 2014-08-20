@@ -7,8 +7,21 @@ module.exports = (grunt)->
     bower:
       build:
         options:
-          targetDir: "dist/js/lib"
+          targetDir: "public/js/lib"
           verbose: true
+
+  _(config).merge
+    coffee:
+      build:
+        files: [
+          {
+            expand: true
+            cwd: "vendor/assets/coffee/"
+            src: "**/*.coffee"
+            dest: "public/js/app/"
+            ext: ".js"
+          }
+        ]
 
   grunt.initConfig config
 
@@ -17,6 +30,7 @@ module.exports = (grunt)->
     "build"
     [
       "bower:build"
+      "coffee:build"
     ]
   )
 
