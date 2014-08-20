@@ -1,13 +1,11 @@
 require "sinatra"
-require "sinatra/rocketio"
+require "haml"
 
 if development?
   require "sinatra/reloader"
 end
 
 class Application < Sinatra::Base
-  register Sinatra::RocketIO
-
   configure :development do
     register Sinatra::Reloader
   end

@@ -1,4 +1,3 @@
-require "sinatra/rocketio"
 require "faye/websocket"
 
 module Middlewares
@@ -15,10 +14,10 @@ module Middlewares
 
     def call(env)
       if Faye::WebSocket.websocket?(env)
-        io_ws = Faye::WebSocket.new(env, nil, {ping: 15})
+        io_ws = Faye::WebSocket.new(env, nil?, {ping: KEEPALIVE_TIME})
 
         io_ws.on :open do |client|
-          @clients[io_ws.object_id] = io_ws.object_id
+          @clients[io_ws.object_id] = io_ws
           @players[io_ws.object_id] = {
             x: 0,
             y: 0,
@@ -32,29 +31,8 @@ module Middlewares
           @clients.delete s
         end
 
-
-        io_ws.on :move_up do |data, client|
-          s = io_ws.object_id
-          players[s][:y] -= 1
-          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
-        end
-
-        io_ws.on :move_left do |data, client|
-          s = io_ws.object_id
-          players[s][:x] -= 1
-          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
-        end
-
-        io_ws.on :move_down do |data, client|
-          s = io_ws.object_id
-          players[s][:y] += 1
-          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
-        end
-
-        io_ws.on :move_right do |data, client|
-          s = io_ws.object_id
-          players[s][:x] += 1
-          push :update_pos, {:s_id => s, :pos_json => @players[s].to_json}
+        io_ws.on :message do |event|
+          io_ws.send event.data
         end
 
         io_ws.rack_response

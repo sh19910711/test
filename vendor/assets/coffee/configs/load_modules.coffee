@@ -15,6 +15,4 @@ requirejs(
         app_model: app_model
       )
       app_router.start()
-      app_model.get_io().on "connect", ->
-        app_model.init_ws()
 )

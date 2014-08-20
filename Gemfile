@@ -7,13 +7,11 @@ ruby "2.1.2"
 
 gem "sinatra"
 gem "sinatra-contrib"
-gem "sinatra-rocketio"
 gem "faye-websocket"
 gem "haml"
-gem "sprockets"
 gem "coffee-script"
 gem "sass"
-gem "thin"
+gem "puma"
 
 group :develop do
   gem "foreman"

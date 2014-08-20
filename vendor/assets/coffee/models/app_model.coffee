@@ -13,17 +13,18 @@ define(
   )->
     class AppModel extends Backbone.Model
       initialize: ->
-        console.log "@MainModel#initialize()"
-        @ws = new WebSocket("ws://#{document.location.host}")
+        console.log "@AppModel#initialize()"
+        @ws = new WebSocket("ws://#{location.host}/")
+        @init_ws()
         @players = {}
 
       send: (t, data)->
-        @send {
+        @ws.send {
           type: t
           data: data
         }
 
-      get_io: ->
+      get_ws: ->
         @ws
 
       move_up: ->
@@ -48,14 +49,17 @@ define(
 
       init_ws: ->
         # WS events
-        @ws.on "user_enter", (d)=>
-          pos = JSON.parse d.pos_json
-          console.log "@enter: #{arguments}"
-          @players[d.s_id] = new PlayerModel(pos)
+        @ws.onmessage = (o)=>
+          console.log "onmessage", arguments
+          switch o.type
+            when "user_enter"
+              pos = JSON.parse d.pos_json
+              console.log "@enter: #{arguments}"
+              @players[d.s_id] = new PlayerModel(pos)
 
-        @ws.on "user_exit", (d)=>
-          console.log "@exit: #{arguments}"
+            when "user_exit"
+              console.log "@exit: #{arguments}"
 
-        @ws.on "update_pos", (d)=>
-          console.log "@update_pos ev: #{arguments}"
+            when "update_pos"
+              console.log "@update_pos ev: #{arguments}"
 )

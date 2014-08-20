@@ -1,1 +1,1 @@
-web: bundle exec thin -p $PORT -R config.ru start
+web: bundle exec puma -p $PORT
