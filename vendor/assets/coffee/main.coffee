@@ -22,7 +22,9 @@ define(
       move_right: ->
         console.log "right"
 
-      init: ->
+      init: (callback)->
+        @io = new RocketIO()
+
         # DOM events
         $(document).on "click", "button.up", =>
           @move_up()
