@@ -9,6 +9,7 @@ gem "sinatra-rocketio"
 gem "haml"
 gem "sprockets"
 gem "coffee-script"
+gem "sass"
 gem "thin"
 
 group :develop do
