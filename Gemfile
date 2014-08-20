@@ -12,7 +12,7 @@ gem "haml"
 gem "sprockets"
 gem "coffee-script"
 gem "sass"
-gem "thin"
+gem "puma"
 
 group :develop do
   gem "foreman"
