@@ -6,44 +6,53 @@ if development?
 end
 
 class Application < Sinatra::Base
-  configure do
-    @sessions = []
-    @players = {}
-  end
+  register Sinatra::RocketIO
 
   configure :development do
     register Sinatra::Reloader
   end
 
-  configure :production, :development do
-    register Sinatra::RocketIO
+  configure do
+    players = {}
     io = Sinatra::RocketIO
 
-    io.on :enter do |data, client|
+    io.on :connect do |client|
       s = client.session
-      @sessions.push s
+      players[s] = {
+        x: 0,
+        y: 0,
+      }
+      io.push :user_enter, {:s_id => s, :pos => players[s].to_json}
     end
-    
+
+    io.on :disconnect do |client|
+      s = client.session
+      io.push :user_exit, {:s_id => s}
+    end
+
     io.on :move_up do |data, client|
       s = client.session
-      @players[s][:y] -= 1
+      players[s][:y] -= 1
+      io.push :update_pos, {:s_id => s, :pos => players[s].to_json}
     end
 
     io.on :move_left do |data, client|
       s = client.session
-      @players[s][:x] -= 1
+      players[s][:x] -= 1
+      io.push :update_pos, {:s_id => s, :pos => players[s].to_json}
     end
 
     io.on :move_down do |data, client|
       s = client.session
-      @players[s][:y] += 1
+      players[s][:y] += 1
+      io.push :update_pos, {:s_id => s, :pos => players[s].to_json}
     end
 
     io.on :move_right do |data, client|
       s = client.session
-      @players[s][:x] += 1
+      players[s][:x] += 1
+      io.push :update_pos, {:s_id => s, :pos => players[s].to_json}
     end
-
   end
 
   get "/" do

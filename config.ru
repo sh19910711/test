@@ -2,6 +2,9 @@ require_relative "app"
 require "sprockets"
 
 map "/" do
+  set :cometio, :timeout => 120, :post_interval => 2, :allow_crossdomain => false
+  set :websocketio, :port => 5001
+  set :rocketio, :websocket => true, :comet => true
   run Application
 end
 

@@ -9,4 +9,9 @@ gem "sinatra-rocketio"
 gem "haml"
 gem "sprockets"
 gem "coffee-script"
+gem "thin"
+
+group :develop do
+  gem "foreman"
+end
 

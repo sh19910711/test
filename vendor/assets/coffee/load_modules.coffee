@@ -7,5 +7,6 @@ requirejs(
   )->
     $ ->
       app = new Main()
-      app.init()
+      app.get_io().on "connect", ->
+        app.init()
 )
