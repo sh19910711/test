@@ -7,8 +7,8 @@
     "postinstall": "node ./node_modules/grunt-cli/bin/grunt build"
   },
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
+  "license": "MIT",
+  "dependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
     "grunt-cli": "^0.1.13",
