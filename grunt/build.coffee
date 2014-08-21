@@ -41,6 +41,15 @@ module.exports = (grunt)->
           }
         ]
 
+  # $ grunt cssmin:build
+  _(config).merge
+    cssmin:
+      build:
+        files:
+          "lib/app/public/css/app/main.css": [
+            "vendor/assets/css/**/*.css"
+          ]
+
   grunt.initConfig config
 
   # $ grunt build
@@ -49,6 +58,6 @@ module.exports = (grunt)->
     [
       "bower:build"
       "coffee:build"
-      "sass:build"
+      "cssmin:build"
     ]
   )
