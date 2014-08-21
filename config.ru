@@ -1,9 +1,9 @@
 require "faye/websocket"
 Faye::WebSocket.load_adapter('thin')
 
-require_relative "app"
-require_relative "middlewares/websocket"
+require_relative "lib/app"
+require_relative "lib/rack/middleware/websocket"
 
-use Middlewares::WebSocket
+use Rack::Middleware::WebSocket
 run Application
 
