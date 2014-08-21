@@ -27,20 +27,6 @@ module.exports = (grunt)->
           }
         ]
 
-  # $ grunt sass:build
-  _(config).merge
-    sass:
-      build:
-        files: [
-          {
-            expand: true
-            cwd: "vendor/assets/sass/"
-            src: "**/*.sass"
-            dest: "lib/app/public/css/app/"
-            ext: ".css"
-          }
-        ]
-
   # $ grunt cssmin:build
   _(config).merge
     cssmin:

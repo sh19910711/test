@@ -15,7 +15,6 @@
     "grunt-cli": "^0.1.13",
     "grunt-contrib-coffee": "^0.11.1",
     "grunt-contrib-cssmin": "^0.10.0",
-    "grunt-contrib-sass": "^0.8.0",
     "lodash": "^2.4.1"
   }
 }
