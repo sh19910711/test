@@ -7,7 +7,6 @@ module Middlewares
       @app = app
       @clients = {}
       @players = {}
-      @queue = Queue.new()
       Thread.new do
         loop do
           @sleep
