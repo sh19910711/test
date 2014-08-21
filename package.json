@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "gem install --user-install --no-ri --no-rdoc",
+    "preinstall": "gem install --user-install --no-ri --no-rdoc sass",
     "postinstall": "./node_modules/grunt-cli/bin/grunt build"
   },
   "author": "",
