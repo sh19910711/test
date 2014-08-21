@@ -1,4 +1,5 @@
 require "faye/websocket"
+require "json"
 
 module Middlewares
   class WebSocket
@@ -6,21 +7,28 @@ module Middlewares
       @app = app
       @clients = {}
       @players = {}
+      @queue = Queue.new()
+      Thread.new do
+        loop do
+          @sleep
+        end
+      end
     end
 
-    def push(data)
-      @clients.each {|d, c| c.send(data.to_json) }
+    def push(type, data)
+      @clients.each {|d, c| c.send({:type => type, :data => data.to_json}) }
     end
 
     def call(env)
       if Faye::WebSocket.websocket?(env)
-        io_ws = Faye::WebSocket.new(env, nil, {ping: 20})
+        io_ws = Faye::WebSocket.new(env)
 
         io_ws.on :open do |client|
+          s = io_ws.object_id
           @clients[io_ws.object_id] = io_ws
           @players[io_ws.object_id] = {
-            x: 0,
-            y: 0,
+            :x => 0,
+            :y => 0,
           }
           push :user_enter, {:s_id => s, :pos_json => @players[s].to_json}
         end
