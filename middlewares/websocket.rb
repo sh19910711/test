@@ -14,7 +14,7 @@ module Middlewares
 
     def call(env)
       if Faye::WebSocket.websocket?(env)
-        io_ws = Faye::WebSocket.new(env, nil?, {ping: 20})
+        io_ws = Faye::WebSocket.new(env, nil, {ping: 20})
 
         io_ws.on :open do |client|
           @clients[io_ws.object_id] = io_ws
