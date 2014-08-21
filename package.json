@@ -1,0 +1,19 @@
+{
+  "name": "gh-online",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "./node_modules/grunt-cli/bin/grunt build"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-coffee": "^0.11.1",
+    "grunt-contrib-sass": "^0.8.0",
+    "lodash": "^2.4.1"
+  }
+}

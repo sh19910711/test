@@ -1,0 +1,22 @@
+{
+  "name": "gh-online",
+  "version": "0.0.0",
+  "authors": [
+    "Hiroyuki Sano <sh19910711@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "requirejs": "~2.1.14",
+    "backbone": "~1.1.2",
+    "underscore": "~1.6.0",
+    "tmlib.js": "~0.2.2"
+  }
+}
