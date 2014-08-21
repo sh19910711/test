@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "preinstall": "export PATH="$HOME/.gem/ruby/2.0.0/bin:$PATH"; gem install --user-install --no-ri --no-rdoc sass",
+    "preinstall": "export PATH=\"$HOME/.gem/ruby/2.0.0/bin:$PATH\`"; gem install --user-install --no-ri --no-rdoc sass",
     "postinstall": "./node_modules/grunt-cli/bin/grunt build"
   },
   "author": "",
