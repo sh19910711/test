@@ -19,6 +19,8 @@ define(
         "": "show_index"
 
       show_index: ->
+        @app_model.set "title", "hello"
+
         layout_view = new LayoutView()
         app_view = new AppView(
           model: @app_model
