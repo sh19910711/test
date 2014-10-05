@@ -11,9 +11,10 @@ scripts = []
 
 # Set default options unless defined
 init_options = (options)->
-  options.host ||= '127.0.0.1'
-  options.port ||= '28080'
-  options.server ||= false
+  options         ||= {}
+  options.host    ||= '127.0.0.1'
+  options.port    ||= '28080'
+  options.server  ||= false
 
   options.test_dependencies ||= [
     '//cdnjs.cloudflare.com/ajax/libs/chai/1.9.2/chai.js'
@@ -24,6 +25,8 @@ init_options = (options)->
   options.dependencies ||= [
     '//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.14/require.min.js'
   ]
+
+  return options
 
 run_phantomjs = (options)->
   # run phantomjs after set up
@@ -44,8 +47,10 @@ run_phantomjs = (options)->
   phantomjs.stdout.pipe process.stdout
   phantomjs.stderr.pipe process.stderr
 
+  return phantomjs
+
 phantomochajs = (options)->
-  init_options(options)
+  options = init_options(options)
 
   app = connect()
 
