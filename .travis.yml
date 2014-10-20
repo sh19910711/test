@@ -7,4 +7,5 @@ before_script:
 script:
 - node ./src_with_relative/entry.js
 - node ./src_without_relative/entry.js
-- gulp
+- gulp build/with/relative
+- gulp build/without/relative
