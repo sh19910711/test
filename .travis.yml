@@ -8,12 +8,15 @@ rvm:
   - "2.1"
 
 before_install:
+  # vim-gtk: to enable client/server feature
   - sudo apt-get install vim vim-gtk
   - vim --version
   - gvim --version
 
 install:
   - scripts/install_social_snippet
+  # TODO: set repository host
+  - sspm install example-repo
   - bundle install
 
 before_script:
