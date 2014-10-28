@@ -1,0 +1,28 @@
+# Doc: http://docs.travis-ci.com/user/build-configuration/
+
+language: ruby
+
+rvm:
+  - "1.9"
+  - "2.0"
+  - "2.1"
+
+before_install:
+  - sudo apt-get install vim vim-gtk
+  - vim --version
+  - gvim --version
+
+install:
+  - scripts/install_social_snippet
+  - bundle install
+
+before_script:
+  - sh -e /etc/init.d/xvfb start
+
+script:
+  - bundle exec rake spec
+
+env:
+  global:
+    - DISPLAY=:99.0
+
