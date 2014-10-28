@@ -6,7 +6,6 @@ function! social_snippet#commands#insert_snippet()
   :let current_pos = getpos(".")
   :let target_text = join(getline(1,'$'), "\n")
   :%d
-  :let snipped_text = systemlist("ssnip", target_text)
-  :call append(0, snipped_text)
+  :call append(0, split(system("ssnip", target_text), "\n"))
   :call setpos('.', current_pos)
 endfunction
