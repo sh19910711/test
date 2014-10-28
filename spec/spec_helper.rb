@@ -16,6 +16,6 @@ Vimrunner::RSpec.configure do |config|
 end
 
 def vim_current_buffer
-  vim.command(':echomsg join(getline(1, "$"), "\n")').strip
+  vim.command('echomsg join(getline(1, "$"), "\n")').strip
 end
 
