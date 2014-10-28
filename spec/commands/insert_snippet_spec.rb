@@ -4,14 +4,10 @@ describe :SocialSnippetInsertSnippet do
 
   context "without snip tags" do
 
-    let(:input) do
-      [
+    before do
+      vim.insert [
         "hello",
       ].join("\n")
-    end
-
-    before do
-      vim.insert input
     end
 
     context "call :SocialSnippetInsertSnippet" do
@@ -29,8 +25,8 @@ describe :SocialSnippetInsertSnippet do
 
   context "with a snip tags" do
 
-    let(:input) do
-      [
+    before do
+      vim.insert [
         "#include <iostream>",
         "",
         "// @snip <example-repo:func.cpp>",
@@ -42,14 +38,10 @@ describe :SocialSnippetInsertSnippet do
       ].join("\n")
     end
 
-    before do
-      vim.insert input
-    end
-
     context "call :SocialSnippetInsertSnippet" do
 
       before do
-        vim.command "SocialSnippetInsertSnippet"
+        vim.command :SocialSnippetInsertSnippet
       end
 
       let(:output) { vim_current_buffer }
