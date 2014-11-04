@@ -11,7 +11,7 @@ function exec() {
 export SOCIAL_SNIPPET_TMPDIR=`mktemp -d`
 
 exec "pushd $SOCIAL_SNIPPET_TMPDIR" || exit 1
-exec 'git clone --single-branch -b feature/ssnip-command git://github.com/social-snippet/social-snippet.git social-snippet'
+exec 'git clone --single-branch -b wip/install-repo/1414477823 git://github.com/social-snippet/social-snippet.git social-snippet'
 exec 'cd social-snippet'
 exec 'bundle install' || exit 1
 exec 'bundle exec rake build' || exit 1
