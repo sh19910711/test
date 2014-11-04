@@ -4,7 +4,7 @@ let s:source = {
 
 function! s:source.gather_candidates(context)
   if social_snippet#complete#is_repo_name_mode(a:context.input)
-    return map(["dummy1", "dummy2", "dummy3"], '{ "word" : v:val }')
+    return map(social_snippet#complete#repo_name(a:context.input), '{ "word" : v:val }')
   endif
   return []
 endfunction
