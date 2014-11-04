@@ -3,7 +3,10 @@ let s:source = {
       \}
 
 function! s:source.gather_candidates(context)
-  return map(["test1", "test2", "test3"], '{ "word" : v:val }')
+  if a:context.input =~ '@snip\(pet\)\?\s*<'
+    return map(["dummy1", "dummy2", "dummy3"], '{ "word" : v:val }')
+  endif
+  return []
 endfunction
 
 function! neocomplete#sources#social_snippet#define()
