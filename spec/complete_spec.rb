@@ -58,8 +58,8 @@ describe "social_snippet#complete" do
 
         before { vim.command "call append(0, join(social_snippet#complete#file_name('@snip <example-repo:fu'), \"\n\"))" }
         let(:output) { vim_current_buffer }
-        it { expect(output).to match /file.cpp/ }
-        it { expect(output).to match /file\// }
+        it { expect(output).to match /func\.cpp/ }
+        it { expect(output).to match /func\// }
 
       end
 
