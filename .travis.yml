@@ -14,13 +14,12 @@ before_install:
   - gvim --version
 
 install:
-  - scripts/install_social_snippet
-  # TODO: set repository host
-  - sspm install example-repo
-  - bundle install
+  - travis_retry bundle install --jobs=3
 
 before_script:
   - sh -e /etc/init.d/xvfb start
+  # TODO: set repository host
+  - bundle exec sspm install example-repo
 
 script:
   - bundle exec rake spec
