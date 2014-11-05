@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe :SocialSnippetInsertSnippet do
+describe :SSInsertSnippet do
 
   context "enable social_snippet" do
 
@@ -14,16 +14,16 @@ describe :SocialSnippetInsertSnippet do
         ].join("\n")
       end
 
-      context "call :SocialSnippetInsertSnippet" do
+      context "call :SSInsertSnippet" do
 
         before do
-          vim.command "SocialSnippetInsertSnippet"
+          vim.command :SSInsertSnippet
         end
 
         let(:output) { vim_current_buffer }
         it { expect(output).to match /hello/ }
 
-      end # call :SocialSnippetInsertSnippet
+      end # call :SSInsertSnippet
 
     end # without snip tags
 
@@ -42,10 +42,10 @@ describe :SocialSnippetInsertSnippet do
         ].join("\n")
       end
 
-      context "call :SocialSnippetInsertSnippet" do
+      context "call :SSInsertSnippet" do
 
         before do
-          vim.command :SocialSnippetInsertSnippet
+          vim.command :SSInsertSnippet
         end
 
         let(:output) { vim_current_buffer }
@@ -57,7 +57,7 @@ describe :SocialSnippetInsertSnippet do
         it { expect(output).to match /<example-repo#\d+\.\d+\.\d+:func\/sub_func_2.cpp>/ }
         it { expect(output).to match /<example-repo#\d+\.\d+\.\d+:func\/sub_func_3.cpp>/ }
 
-      end # call :SocialSnippetInsertSnippet
+      end # call :SSInsertSnippet
 
     end # with a snip tag
 
