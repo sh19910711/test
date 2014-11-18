@@ -42,7 +42,7 @@ describe "social_snippet#complete" do
 
     describe "#repo_name" do
 
-      context "keyword = ex" do
+      context "keyword = ex", :current => true do
 
         before { vim.command "call append(0, join(social_snippet#complete#repo_name('@snip <ex'), \"\n\"))" }
         let(:output) { vim_current_buffer }
@@ -54,7 +54,7 @@ describe "social_snippet#complete" do
 
     describe "#file_name" do
 
-      context "keyword = example-repo:fu", :current => true do
+      context "keyword = example-repo:fu" do
 
         before { vim.command "call append(0, join(social_snippet#complete#file_name('@snip <example-repo:fu'), \"\n\"))" }
         let(:output) { vim_current_buffer }
