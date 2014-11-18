@@ -12,9 +12,9 @@ function! social_snippet#complete#call(keyword)
   endif
 
   if social_snippet#complete#is_repo_name_mode(a:keyword)
-    return map(social_snippet#complete#repo_name(a:keyword), '{ "word" : v:val }')
+    return social_snippet#complete#repo_name(a:keyword)
   elseif social_snippet#complete#is_file_name_mode(a:keyword)
-    return map(social_snippet#complete#file_name(a:keyword), '{ "word" : v:val }')
+    return social_snippet#complete#file_name(a:keyword)
   endif
 endfunction
 
