@@ -22,9 +22,9 @@ function! social_snippet#complete#repo_name(keyword)
   if has("ruby")
     call social_snippet#init#ruby()
     ruby << END_OF_SCRIPT
-    key = VIM.evaluate('a:keyword')
-    ret = @social_snippet.complete_snippet_path(key).map {|cand| "\"#{cand}\"" }
-    VIM.command "let ret = [#{ret.join(",")}]"
+key = VIM.evaluate('a:keyword')
+ret = @social_snippet.complete_snippet_path(key).map {|cand| "\"#{cand}\"" }
+VIM.command "let ret = [#{ret.join(",")}]"
 END_OF_SCRIPT
   else
     :let ret = split(system("sspm complete " . shellescape(a:keyword)), "\n")
