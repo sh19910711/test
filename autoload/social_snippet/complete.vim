@@ -6,6 +6,14 @@ function! social_snippet#complete#is_file_name_mode(str)
   return a:str =~ '@snip\(pet\)\?\s*<[^:\#>]*:[^>]*$'
 endfunction
 
+function! social_snippet#complete#call(keyword)
+  if social_snippet#complete#is_repo_name_mode(a:keyword)
+    return map(social_snippet#complete#repo_name(a:keyword), '{ "word" : v:val }')
+  elseif social_snippet#complete#is_file_name_mode(a:keyword)
+    return map(social_snippet#complete#file_name(a:keyword), '{ "word" : v:val }')
+  endif
+endfunction
+
 function! social_snippet#complete#repo_name(keyword)
   :let ret = split(system("sspm complete " . shellescape(a:keyword)), "\n")
   return ret
