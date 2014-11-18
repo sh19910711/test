@@ -20,6 +20,7 @@ endfunction
 
 function! social_snippet#complete#repo_name(keyword)
   if has("ruby")
+    call social_snippet#init#ruby()
     ruby << END_OF_SCRIPT
     key = VIM.evaluate('a:keyword')
     ret = @social_snippet.complete_snippet_path(key).map {|cand| "\"#{cand}\"" }
