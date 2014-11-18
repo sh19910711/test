@@ -7,6 +7,10 @@ function! social_snippet#complete#is_file_name_mode(str)
 endfunction
 
 function! social_snippet#complete#call(keyword)
+  if ! g:social_snippet#complete#enable
+    return []
+  endif
+
   if social_snippet#complete#is_repo_name_mode(a:keyword)
     return map(social_snippet#complete#repo_name(a:keyword), '{ "word" : v:val }')
   elseif social_snippet#complete#is_file_name_mode(a:keyword)
