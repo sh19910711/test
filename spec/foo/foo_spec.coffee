@@ -1,3 +1,5 @@
 describe "foo", ->
   it "bar", ->
-    console.log "foobar"
+    Foo = require("foo")
+    bar = new Foo::Bar
+    bar.say()

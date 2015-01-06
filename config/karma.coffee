@@ -2,26 +2,35 @@
 # Generated on Tue Jan 06 2015 17:13:01 GMT+0900 (JST)
 
 path = require("path")
+glob = require("glob")
 
 module.exports = (config) ->
+
   config.set
 
     # base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '..'
+    basePath: "../"
 
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai', 'mocha-debug']
+    frameworks: ['webpack', 'mocha', 'chai']
 
 
     # list of files / patterns to load in the browser
-    files: [
-      'spec/**/*_spec.coffee'
-    ]
+    files:
+      glob.sync("spec/**/*_spec.coffee")
 
     # list of files to exclude
     exclude: [
+    ]
+
+    plugins: [
+      require "karma-mocha"
+      require "karma-chai"
+      require "karma-coffee-preprocessor"
+      require "karma-phantomjs-launcher"
+      require "karma-webpack"
     ]
 
     # preprocess matching files before serving them to the browser
@@ -30,22 +39,22 @@ module.exports = (config) ->
       'spec/**/*.coffee': ['webpack']
     }
 
-    webpack:
+    webpack: {
       resolve:
-        root: path.join(__dirname, "../src")
-        extensxions: [
+        root: path.join(__dirname, "..", "src")
+        extensions: [
           ""
           ".coffee"
-          ".js"
         ]
-
-      entry:
-        app: "entry.coffee"
-
       module:
         loaders: [
-          { test: /\.coffee$/, loader: "coffee-loader" }
+          { test: /\.coffee$/, loader: 'coffee-loader' }
         ]
+    }
+
+    webpackServer:
+      stats:
+        colors: true
 
     # test results reporter to use
     # possible values: 'dots', 'progress'
@@ -84,7 +93,3 @@ module.exports = (config) ->
     # if true, Karma captures browsers, runs the tests and exits
     singleRun: true
 
-    client:
-      mocha:
-        reporter: "html"
-        ui: "bdd"
