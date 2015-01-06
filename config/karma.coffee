@@ -1,6 +1,7 @@
 # Karma configuration
 # Generated on Tue Jan 06 2015 17:13:01 GMT+0900 (JST)
 
+webpack = require("webpack")
 path = require("path")
 glob = require("glob")
 
@@ -37,15 +38,29 @@ module.exports = (config) ->
 
     webpack:
       resolve:
-        root: path.join(__dirname, "..", "src")
+        root: [
+          path.join(__dirname, "..", "bower_components")
+          path.join(__dirname, "..", "src")
+        ]
+
         extensions: [
           ""
           ".coffee"
+          ".js"
         ]
+
       module:
         loaders: [
           { test: /\.coffee$/, loader: "coffee-loader" }
         ]
+      
+      plugins: [
+        new webpack.ResolverPlugin [
+          new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin "bower.json", ["main"]
+        ]
+        new webpack.ProvidePlugin
+          "jquery": "bower_components/jquery"
+      ]
 
     webpackServer:
       noINfo: true
@@ -58,7 +73,6 @@ module.exports = (config) ->
 
     # web server port
     port: 9876
-
 
     # enable / disable colors in the output (reporters and logs)
     colors: true
@@ -82,9 +96,8 @@ module.exports = (config) ->
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: [
       "PhantomJS"
-      "Firefox"
+      # "Firefox"
     ]
-
 
     # Continuous Integration mode
     # if true, Karma captures browsers, runs the tests and exits
