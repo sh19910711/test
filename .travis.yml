@@ -5,8 +5,10 @@ nvm:
 
 sudo: false
 
-before_install:
-  - npm install -g gulp
+install:
+  - travis_retry npm install -g gulp
+  - travis_retry npm install
+  - travis_retry bower install
 
 before_script:
   - sh -e /etc/init.d/xvfb start
