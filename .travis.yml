@@ -1,3 +1,6 @@
 language: node
+
+sudo: false
+
 before_install:
   - npm install -g gulp
