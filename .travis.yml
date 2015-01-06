@@ -16,4 +16,4 @@ script:
 
 env:
   global:
-    - DISPLAY=:99.9
+    - DISPLAY=:99.0
