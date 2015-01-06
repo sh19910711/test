@@ -4,3 +4,6 @@ sudo: false
 
 before_install:
   - npm install -g gulp
+
+script:
+  - gulp test
