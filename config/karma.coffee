@@ -14,7 +14,7 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['webpack', 'mocha', 'chai']
+    frameworks: ["webpack", "mocha", "chai"]
 
     plugins: [
       require "karma-mocha"
@@ -33,7 +33,7 @@ module.exports = (config) ->
     # preprocess matching files before serving them to the browser
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors:
-      'spec/**/*.coffee': ['webpack']
+      "spec/**/*.coffee": ["webpack"]
 
     webpack:
       resolve:
@@ -44,16 +44,16 @@ module.exports = (config) ->
         ]
       module:
         loaders: [
-          { test: /\.coffee$/, loader: 'coffee-loader' }
+          { test: /\.coffee$/, loader: "coffee-loader" }
         ]
 
     webpackServer:
       noINfo: true
 
     # test results reporter to use
-    # possible values: 'dots', 'progress'
+    # possible values: "dots", "progress"
     # available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['spec']
+    reporters: ["spec"]
 
 
     # web server port
@@ -80,7 +80,10 @@ module.exports = (config) ->
 
     # start these browsers
     # available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS']
+    browsers: [
+      "PhantomJS"
+      "Firefox"
+    ]
 
 
     # Continuous Integration mode
