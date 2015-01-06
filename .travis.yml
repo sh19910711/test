@@ -17,3 +17,7 @@ script:
 env:
   global:
     - DISPLAY=:99.0
+
+cache:
+  directories:
+    - node_modules
