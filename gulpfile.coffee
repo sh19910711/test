@@ -3,29 +3,18 @@ webpack = require("webpack")
 WebpackDevServer = require("webpack-dev-server")
 gulpWebpack = require("gulp-webpack")
 path = require("path")
+karma = require("karma")
+
+gulp.task "test", (done)->
+  karmaConfig = {
+    configFile: path.join(__dirname, "config/karma.coffee")
+  }
+  karma.server.start karmaConfig, ->
+    done()
+  undefined
 
 gulp.task "build", ->
+  webpackConfig = require("./config/webpack")
   gulp.src "src/**/*.coffee"
-    .pipe gulpWebpack
-      watch: true
-      progress: true
-      minify: true
-      resolve:
-        root: path.join(__dirname, "src/")
-        extensions: [
-          ""
-          ".coffee"
-        ]
-      module:
-        loaders: [
-          { test: /\.coffee$/, loader: "coffee-loader" }
-        ]
-      entry:
-        app: "entry.coffee"
-      output:
-        filename: "[name].js"
-      plugins: [
-        new webpack.DefinePlugin
-          VERSION: JSON.stringify("1.2.3")
-      ]
+    .pipe gulpWebpack(webpackConfig)
     .pipe gulp.dest("dist/")
