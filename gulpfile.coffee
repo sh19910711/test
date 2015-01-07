@@ -1,26 +1,20 @@
 gulp = require("gulp")
-webpack = require("webpack")
-WebpackDevServer = require("webpack-dev-server")
-gulpWebpack = require("gulp-webpack")
-path = require("path")
-karma = require("karma")
-bower = require("bower")
 
 gulp.task "bower", (done)->
+  bower = require("bower")
   bower.commands.install().on "end", ->
     done()
   undefined
 
 gulp.task "test", ["bower"], (done)->
-  karmaConfig = {
-    configFile: path.join(__dirname, "config/karma.coffee")
-  }
-  karma.server.start karmaConfig, (err)->
-    throw new Error "karma: failed test" if err
-    done()
-  undefined
+  karma = require("gulp-karma")
+  path = require("path")
+  gulp.src ["spec/**/*_spec.coffee"]
+    .pipe karma
+      configFile: path.join(__dirname, "config/karma.coffee")
 
 gulp.task "build", ->
+  gulpWebpack = require("gulp-webpack")
   webpackConfig = require("./config/webpack")
   gulp.src "src/**/*.coffee"
     .pipe gulpWebpack(webpackConfig)
