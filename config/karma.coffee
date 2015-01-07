@@ -12,7 +12,7 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["mocha", "chai", "mocha-debug"]
+    frameworks: ["webpack", "mocha", "chai", "mocha-debug"]
 
     # list of files / patterns to load in the browser
     files: glob.sync("spec/**/*_spec.coffee")
