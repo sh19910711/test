@@ -16,7 +16,7 @@ module.exports = (config) ->
     preprocessors:
       "spec/**/*.coffee": ["webpack"]
 
-    webpack: require("./webpack_config")
+    webpack: require("./webpack")
 
     # available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ["spec"]
