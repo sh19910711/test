@@ -10,16 +10,13 @@ module.exports = (config) ->
     basePath: "../"
 
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["webpack", "mocha", "chai"]
+    frameworks: ["mocha", "chai"]
 
     # available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors:
       "spec/**/*.coffee": ["webpack"]
 
-    webpack: require("./webpack")
-
-    webpackMiddleware:
-      noInfo: true
+    webpack: require("./webpack_config")
 
     # available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ["spec"]
