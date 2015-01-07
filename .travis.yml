@@ -6,6 +6,7 @@ nvm:
 sudo: false
 
 before_install:
+  - npm prune
   - travis_retry npm install -g gulp
   - travis_retry npm install -g bower
 
