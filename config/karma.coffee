@@ -1,8 +1,6 @@
 # Karma configuration
 # Generated on Tue Jan 06 2015 17:13:01 GMT+0900 (JST)
 
-webpack = require("webpack")
-path = require("path")
 glob = require("glob")
 
 module.exports = (config) ->
@@ -12,21 +10,9 @@ module.exports = (config) ->
     # base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: "../"
 
-
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["webpack", "mocha", "chai"]
-
-    plugins: [
-      require "karma-mocha"
-      require "karma-chai"
-      require "karma-coffee-preprocessor"
-      require "karma-phantomjs-launcher"
-      require "karma-firefox-launcher"
-      require "karma-spec-reporter"
-      require "karma-webpack"
-    ]
-
+    frameworks: ["mocha", "chai", "mocha-debug"]
 
     # list of files / patterns to load in the browser
     files: glob.sync("spec/**/*_spec.coffee")
@@ -36,34 +22,7 @@ module.exports = (config) ->
     preprocessors:
       "spec/**/*.coffee": ["webpack"]
 
-    webpack:
-      resolve:
-        root: [
-          path.join(__dirname, "..", "bower_components")
-          path.join(__dirname, "..", "src")
-        ]
-
-        extensions: [
-          ""
-          ".coffee"
-          ".js"
-        ]
-
-      module:
-        loaders: [
-          { test: /\.coffee$/, loader: "coffee-loader" }
-        ]
-      
-      plugins: [
-        new webpack.ResolverPlugin [
-          new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin "bower.json", ["main"]
-        ]
-        new webpack.ProvidePlugin
-          "jquery": "bower_components/jquery"
-      ]
-
-    webpackServer:
-      noINfo: true
+    webpack: require("./webpack")
 
     # test results reporter to use
     # possible values: "dots", "progress"

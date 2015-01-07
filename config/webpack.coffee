@@ -3,32 +3,27 @@ webpack = require("webpack")
 packageInfo = require("../package.json")
 
 module.exports =
-
-  progress: true
-
   resolve:
-    root: path.join(__dirname, "..", "src")
+    root: [
+      path.join(__dirname, "..", "bower_components")
+      path.join(__dirname, "..", "src")
+    ]
+
     extensions: [
       ""
       ".coffee"
+      ".js"
     ]
 
   module:
     loaders: [
       { test: /\.coffee$/, loader: "coffee-loader" }
     ]
-
-  entry:
-    app: "entry.coffee"
-
-  output:
-    filename: "[name].js"
-
+  
   plugins: [
+    new webpack.ResolverPlugin [
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin "bower.json", ["main"]
+    ]
     new webpack.DefinePlugin
-      VERSION: JSON.stringify(packageInfo["version"])
+      ENABLE_FLAG: true
   ]
-
-  client:
-    mocha:
-      reporter: "html"
