@@ -27,7 +27,7 @@ module.exports = (config) ->
     # enable / disable colors in the output (reporters and logs)
     colors: true
 
-    logLevel: config.LOG_DEBUG
+    logLevel: config.LOG_INFO
 
     autoWatch: false
 
