@@ -2,7 +2,6 @@
 # Generated on Tue Jan 06 2015 17:13:01 GMT+0900 (JST)
 
 glob = require("glob")
-require "karma-webpack"
 
 module.exports = (config) ->
 
@@ -18,6 +17,9 @@ module.exports = (config) ->
       "spec/**/*.coffee": ["webpack"]
 
     webpack: require("./webpack")
+
+    webpackMiddleware:
+      noInfo: true
 
     # available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ["spec"]
