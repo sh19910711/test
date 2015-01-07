@@ -12,7 +12,7 @@ module.exports = (config) ->
 
     # frameworks to use
     # available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ["webpack", "mocha", "chai", "mocha-debug"]
+    frameworks: ["mocha", "chai"]
 
     # list of files / patterns to load in the browser
     files: glob.sync("spec/**/*_spec.coffee")
@@ -44,7 +44,7 @@ module.exports = (config) ->
     # - config.LOG_WARN
     # - config.LOG_INFO
     # - config.LOG_DEBUG
-    logLevel: config.LOG_INFO
+    logLevel: config.LOG_DEBUG
 
 
     # enable / disable watching file and executing tests whenever any file changes
