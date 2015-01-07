@@ -16,7 +16,7 @@ gulp.task "test", ["bower"], (done)->
     configFile: path.join(__dirname, "config/karma.coffee")
   }
   karma.server.start karmaConfig, (err)->
-    raise new Error "karma: test failed" if err
+    throw new Error "karma: test failed" if err
     done()
   undefined
 
