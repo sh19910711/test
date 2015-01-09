@@ -28,7 +28,6 @@ module CommandLine
     attr_reader :opt_parser
 
     def initialize(new_args, new_input_stream = STDIN)
-      puts "command init: before" # DEBUG
       @input_stream = new_input_stream
       @terminal = ::HighLine.new(new_input_stream)
       init_global # TODO: remove
@@ -39,7 +38,6 @@ module CommandLine
       @opt_parser = OptionParser.new do |opt|
         opt.version = Git::Contest::VERSION
       end
-      puts "command init: after" # DEBUG
     end
 
     def define_options
