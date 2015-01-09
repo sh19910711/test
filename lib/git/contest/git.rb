@@ -14,6 +14,7 @@ module Git
 
   # use return value
   def self.do_no_echo(*args)
+    puts "git #{args.join(' ')}" # DEBUG
     puts "git #{args.join(' ')}" if ENV['GIT_CONTEST_DEBUG'] == 'ON'
     system "git #{args.join(' ')} >/dev/null 2>&1"
   end
