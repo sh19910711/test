@@ -13,7 +13,7 @@ install:
   - cmd: bundle install --jobs 4 --path vendor/bundle
 
 test_script:
-#  - cmd: bundle exec rake spec
+  - cmd: bundle exec rake spec
 
 build: "off"
 
