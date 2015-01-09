@@ -19,7 +19,7 @@ install:
   - cmd: bundle install --path vendor/bundle
 
 test_script:
-  - cmd: bundle exec rake spec
+  - cmd: bundle exec rake spec_current
 
 build: "off"
 
