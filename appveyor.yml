@@ -10,6 +10,7 @@ cache:
   - vendor/bundle
 
 install:
+  - cmd: dir
   - cmd: bundle install --jobs 4 --path vendor/bundle
 
 test_script:
