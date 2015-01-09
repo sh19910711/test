@@ -3,14 +3,20 @@ version: "{build}"
 environment:
   matrix:
     - ruby_version: "21"
-#    - ruby_version: "20"
-#    - ruby_version: "19"
+#    - ruby_version: "200"
+#    - ruby_version: "193"
 
 cache:
   - vendor/bundle
+  - C:\Ruby193\lib\ruby\gems\1.9.1
+  - C:\Ruby193\bin
+  - C:\Ruby200\lib\ruby\gems\2.0.0
+  - C:\Ruby200\bin
+  - C:\Ruby21\lib\ruby\gems\2.1.0
+  - C:\Ruby21\bin
 
 install:
-  - cmd: bundle install --jobs 4 --path vendor/bundle
+  - cmd: bundle install --path vendor/bundle
 
 test_script:
   - cmd: bundle exec rake spec

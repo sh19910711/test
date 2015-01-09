@@ -160,7 +160,7 @@ module CommandLine
       end
     end
 
-    context 'A006: --source', :current => true do
+    context 'A006: --source' do
       before do
         Dir.mkdir 'working'
         Dir.chdir 'working'
