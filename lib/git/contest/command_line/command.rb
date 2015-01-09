@@ -28,7 +28,6 @@ module CommandLine
     attr_reader :opt_parser
 
     def initialize(new_args, new_input_stream = STDIN)
-      p "RUBY_PLATFORM = #{RUBY_PLATFORM}" # DEBUG
       @input_stream = new_input_stream
       @terminal = ::HighLine.new(new_input_stream)
       init_global # TODO: remove

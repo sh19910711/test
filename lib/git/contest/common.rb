@@ -17,19 +17,12 @@ def init
 end
 
 def init_global
-  puts "before init global" # DEBUG
   $git_contest_home   = File.expand_path(ENV['GIT_CONTEST_HOME'] || File.join("~", ".git-contest"))
-  puts "test 1" # DEBUG
   $git_contest_config = File.expand_path(ENV['GIT_CONTEST_CONFIG'] || File.join($git_contest_home, "config.yml"))
-  puts "test 2" # DEBUG
   if Git.do_no_echo 'branch'
-    puts "test 3" # DEBUG
     $MASTER = Git.do 'config --get git.contest.branch.master'
-    puts "test 4" # DEBUG
     $PREFIX = Git.do 'config --get git.contest.branch.prefix'
-    puts "test 5" # DEBUG
     $ORIGIN = Git.do 'config --get git.contest.origin'
-    puts "test 6" # DEBUG
     if $ORIGIN == ''
       $ORIGIN = 'origin'
     end
@@ -37,7 +30,6 @@ def init_global
   else
     $GIT_CONTEST_GIT_OK = false
   end
-  puts "after init global" # DEBUG
 end
 
 def init_home
