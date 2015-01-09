@@ -3,8 +3,8 @@ version: "{build}"
 environment:
   matrix:
     - ruby_version: "21"
-    - ruby_version: "20"
-    - ruby_version: "19"
+#    - ruby_version: "20"
+#    - ruby_version: "19"
 
 cache:
   - vendor/bundle
