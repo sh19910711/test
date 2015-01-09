@@ -12,10 +12,8 @@ require 'contest/driver'
 require 'yaml'
 
 def init
-  puts "before init" # DEBUG
   init_global
   init_home
-  puts "after init" # DEBUG
 end
 
 def init_global
