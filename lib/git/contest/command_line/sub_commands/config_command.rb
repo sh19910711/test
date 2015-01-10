@@ -164,9 +164,12 @@ module CommandLine
           # input site info
           # TODO: to check not found
           config["sites"][site_name]["driver"] = terminal.ask("%10s > " % "driver").to_s
+          puts "DEBUG: driver = #{config["sites"][site_name]["driver"]}"
           # TODO: to depend on above driver
           config["sites"][site_name]["user"] = terminal.ask("%10s > " % "user id").to_s
+          puts "DEBUG: user = #{config["sites"][site_name]["user"]}"
           config["sites"][site_name]["password"] = terminal.ask("%10s > " % "password") do |q|
+            puts "DEBUG: config q"
             q.echo = false
           end.to_s
 
