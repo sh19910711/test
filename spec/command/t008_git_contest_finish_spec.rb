@@ -12,10 +12,10 @@ describe "T008: git-contest-finish" do
 
   context "A001: --keep" do
     it "001: init -> start -> empty-commits -> finish", :current => true do
-      call_main(["init", "--defaults"]).run
-      call_main(["start", "branch1"]).run
-      puts Git.do "commit --allow-empty -m \"this is commit\""
-      call_main(["finish", "--no-edit"]).run
+      expect { call_main(["init", "--defaults"]).run }.to output(/.*/).to_stdout
+      expect { call_main(["start", "branch1"]).run }.to output(/.*/).to_stdout
+      Git.do "commit --allow-empty -m \"this is commit\""
+      expect { call_main(["finish", "--no-edit"]).run }.to output(/.*/).to_stdout
       ret1 = Git.do "branch"
       ret_log1 = Git.do "log --oneline master"
       expect(ret1.split(/\s+/)).not_to include /branch1/
