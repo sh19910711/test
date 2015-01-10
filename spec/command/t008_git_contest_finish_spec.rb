@@ -11,7 +11,7 @@ describe "T008: git-contest-finish" do
   end
 
   context "A001: --keep" do
-    it "001: init -> start -> empty-commits -> finish", :current => true do
+    it "001: init -> start -> empty-commits -> finish" do
       expect { call_main(["init", "--defaults"]).run }.to output(/.*/).to_stdout
       expect { call_main(["start", "branch1"]).run }.to output(/.*/).to_stdout
       Git.do "commit --allow-empty -m \"this is commit\""

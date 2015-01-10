@@ -8,12 +8,6 @@ environment:
 
 cache:
   - vendor/bundle
-  - C:\Ruby193\lib\ruby\gems\1.9.1
-  - C:\Ruby193\bin
-  - C:\Ruby200\lib\ruby\gems\2.0.0
-  - C:\Ruby200\bin
-  - C:\Ruby21\lib\ruby\gems\2.1.0
-  - C:\Ruby21\bin
 
 install:
   - cmd: git config --global user.email "dummy@localhost"
@@ -21,7 +15,7 @@ install:
   - cmd: bundle install --path vendor/bundle
 
 test_script:
-  - cmd: bundle exec rake spec
+  - cmd: bundle exec rake spec_current
 
 build: "off"
 

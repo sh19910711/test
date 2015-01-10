@@ -87,7 +87,7 @@ EOF
     end
   end
 
-  context "git contest config site add" do
+  context "git contest config site add", :current => true do
     before(:each) do
       # create config
       File.open "#{@temp_dir}/config.yml", "w" do |file|
