@@ -14,6 +14,7 @@ module CommandLine
     class ConfigCommand < Command
 
       def initialize(new_args, new_input_stream = STDIN)
+        p "input_stream = ", new_input_stream
         super
       end
 
@@ -158,6 +159,8 @@ module CommandLine
           # init config
           config["sites"][site_name] = {}
 
+          puts "DEBUG: before input"
+
           # input site info
           # TODO: to check not found
           config["sites"][site_name]["driver"] = terminal.ask("%10s > " % "driver").to_s
@@ -166,6 +169,8 @@ module CommandLine
           config["sites"][site_name]["password"] = terminal.ask("%10s > " % "password") do |q|
             q.echo = false
           end.to_s
+
+          puts "DEBUG: after input"
 
           # set config
           File.open($git_contest_config, 'w') {|f| f.write config.to_yaml }
