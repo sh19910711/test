@@ -114,7 +114,8 @@ EOF
         ].join($/))
       end
 
-      before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
+      # before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
+      before { call_main(["config", "site", "add", "test_site2"], fake_input).run }
 
       context "load config" do
         let(:conf) { YAML.load_file config_file }
