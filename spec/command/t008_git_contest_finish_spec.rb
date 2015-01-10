@@ -14,7 +14,7 @@ describe "T008: git-contest-finish" do
     it "001: init -> start -> empty-commits -> finish", :current => true do
       call_main(["init", "--defaults"]).run
       call_main(["start", "branch1"]).run
-      Git.do "commit --allow-empty -m 'this is commit'"
+      puts Git.do "commit --allow-empty -m 'this is commit'"
       call_main(["finish", "--no-edit"]).run
       ret1 = Git.do "branch"
       ret_log1 = Git.do "log --oneline master"
