@@ -106,12 +106,14 @@ EOF
 
     context "$ git contest config site add test_site2" do
 
-      let(:fake_input) { ::StringIO.new("test_driver2\ntest_user2\ntest_password2") }
-      before {
-        puts "before run command"
-        call_main(["config", "site", "add", "test_site2"], fake_input).run
-        # expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout
-      }
+      let(:fake_input) do
+        ::StringIO.new([
+          "test_driver2",
+          "test_user2",
+          "test_password2",
+        ].join($/))
+      end
+      before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
 
       context "load config" do
         let(:conf) { YAML.load_file config_file }
