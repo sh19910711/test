@@ -111,6 +111,7 @@ EOF
           "test_driver2",
           "test_user2",
           "test_password2",
+          "",
         ].join($/))
       end
 
