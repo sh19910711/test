@@ -107,7 +107,11 @@ EOF
     context "$ git contest config site add test_site2" do
 
       let(:fake_input) { ::StringIO.new("test_driver2\ntest_user2\ntest_password2") }
-      before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
+      before {
+        puts "before run command"
+        call_main(["config", "site", "add", "test_site2"], fake_input).run
+        # expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout
+      }
 
       context "load config" do
         let(:conf) { YAML.load_file config_file }
