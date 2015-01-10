@@ -113,6 +113,9 @@ EOF
           "test_password2",
         ].join($/))
       end
+      before {
+        puts "fake_input = #{fake_input.gets}"
+      }
       before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
 
       context "load config" do

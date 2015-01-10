@@ -24,7 +24,7 @@ module CommandLine
         '    driver:   uva_online_judge',
         '    user:     dummy',
         '    password: dummy'
-      ].join("\n")
+      ].join($/)
     end
 
     def call_submit(args)
