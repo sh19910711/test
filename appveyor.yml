@@ -16,6 +16,8 @@ cache:
   - C:\Ruby21\bin
 
 install:
+  - cmd: git config --global user.email "dummy@localhost"
+  - cmd: git config --global user.name "This Is Dummyyy"
   - cmd: bundle install --path vendor/bundle
 
 test_script:
