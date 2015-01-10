@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'yaml'
 
-describe "T013: git-contest-config" do
+describe "T013: git-contest-config", :current => true do
 
   let(:config_file) { File.join @temp_dir, "config.yml" }
 
@@ -89,7 +89,7 @@ EOF
     end
   end
 
-  context "git contest config site add", :current => true do
+  context "git contest config site add" do
     before(:each) do
       # create config
       File.open config_file, "w" do |file|
@@ -111,8 +111,7 @@ EOF
           "test_driver2",
           "test_user2",
           "test_password2",
-          "",
-        ].join($/))
+        ].join($/) + $/)
       end
 
       # before { expect { call_main(["config", "site", "add", "test_site2"], fake_input).run }.to output(/.*/).to_stdout }
