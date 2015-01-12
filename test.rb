@@ -1,24 +1,35 @@
 require "bundler/setup"
 require "highline"
 require "stringio"
+require "test/unit"
 
-input_stream = StringIO.new
-input_stream << "item-1" << $/
-input_stream << "item-2" << $/
-input_stream << "item-3" << $/
-input_stream.rewind
+class TestInput < Test::Unit::TestCase
 
-terminal = ::HighLine.new(input_stream)
+  attr_reader :input_stream
+  attr_reader :output_stream
+  attr_reader :terminal
 
-item1 = terminal.ask("item1> ")
-puts "item1 = #{item1}"
-puts ""
+  def setup
+    @input_stream = StringIO.new
+    @output_stream = StringIO.new
+    @terminal = ::HighLine.new(input_stream, output_stream)
+  end
 
-item2 = terminal.ask("item2> ") {|q| q.echo = '*' }
-puts "item2 = #{item2}"
-puts ""
+  def test_1
+    input_stream << "item-1" << $/
+    input_stream << "item-2" << $/
+    input_stream << "item-3" << $/
+    input_stream.rewind
 
-item3 = terminal.ask("item3> ") {|q| q.echo = false }
-puts "item3 = #{item3}"
-puts ""
+    item1 = terminal.ask("item1> ")
+    assert_equal item1, "item-1"
+
+    item2 = terminal.ask("item2> ") {|q| q.echo = '*' }
+    assert_equal item2, "item-2"
+
+    item3 = terminal.ask("item3> ") {|q| q.echo = false }
+    assert_equal item3, "item-3"
+  end
+
+end
 

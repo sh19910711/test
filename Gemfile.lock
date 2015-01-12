@@ -2,9 +2,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     highline (1.6.21)
+    power_assert (0.2.2)
+    test-unit (3.0.9)
+      power_assert
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   highline
+  test-unit
