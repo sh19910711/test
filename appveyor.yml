@@ -1,0 +1,16 @@
+version: "{build}"
+
+environment:
+  matrix:
+    - ruby_version: "21"
+
+cache:
+  - vendor/bundle
+
+install:
+  - cmd: bundle install --path vendor/bundle
+
+test_script:
+  - cmd: bundle exec ruby test.rb
+
+build: "off"
