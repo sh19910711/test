@@ -24,7 +24,7 @@ class TestInput < Test::Unit::TestCase
     item1 = terminal.ask("item1> ")
     assert_equal item1, "item-1"
 
-    item2 = terminal.ask("item2> ") {|q| q.echo = "*" }
+    item2 = input_stream.noecho(&:gets)
     assert_equal item2, "item-2"
 
     item3 = terminal.ask("item3> ") {|q| q.echo = false }
