@@ -2,5 +2,5 @@ language: ruby
 install:
   - gem install slim
 script:
-  - echo 'p Hello, #{name}' | slimrb -l '{"name": "Bob"}'
+  - "echo 'p Hello, #{name}' | slimrb -l '{\"name\": \"Bob\"}'"
 
