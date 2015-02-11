@@ -1,10 +1,9 @@
-package tests
+package codeforces
 
 import "testing"
-import "../codeforces"
 
 func TestHello(t *testing.T) {
-  ret := codeforces.Hello()
+  ret := Hello()
   if ret != "Hello" {
     t.Fail()
   }
