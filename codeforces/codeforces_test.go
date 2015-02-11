@@ -1,31 +1,31 @@
 package codeforces
 
 import "testing"
+import "net/http"
+import "net/http/httptest"
+import "fmt"
+import "log"
 
-func TestHello(t *testing.T) {
-  ret := Hello()
-  if ret != "Hello" {
-    t.Fail()
-  }
+var fakeServer *httptest.Server = setupServer()
+
+func setupServer() *httptest.Server {
+  handler := http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+    log.Printf("%s: %s", r.Method, r.URL.Path)
+    if r.Method == "GET" && r.URL.Path == "/contest.list" {
+      fmt.Fprintln(w, "{\"status\": \"OK\", \"result\": []}")
+    } else {
+      log.Fatalf("Unknown Request")
+    }
+  })
+
+  server := httptest.NewServer(handler)
+  Endpoint = server.URL
+  return server
 }
 
 func TestContestList(t *testing.T) {
   ret := ContestList()
-  if len(ret) != 501 {
-    t.Fail()
-  }
-}
-
-func TestApi(t *testing.T) {
-  ret := api("/contest.list").String()
-  if ret != ENDPOINT + "/contest.list" {
-    t.Fail()
-  }
-}
-
-func TestApiWithQuery(t *testing.T) {
-  ret := api("/contest.list?q=foo").String()
-  if ret != ENDPOINT + "/contest.list?q=foo" {
+  if len(ret) != 0 {
     t.Fail()
   }
 }

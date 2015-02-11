@@ -6,7 +6,7 @@ import "io"
 import "net/url"
 import "encoding/json"
 
-const ENDPOINT = "http://codeforces.com/api"
+var Endpoint = "http://codeforces.com/api"
 
 type Client struct {
   client *http.Client
@@ -17,36 +17,42 @@ type Contest struct {
   Name string `json:"name"`
 }
 
-func api(path string) *url.URL {
-  res, _ := url.Parse(ENDPOINT + path)
-  return res
-}
-
-type ResultContest struct {
+type Result struct {
   Status string `json:"status"`
   Contests []Contest `json:"result"`
 }
 
-func result(r io.Reader) []Contest {
-  ret := new(ResultContest)
+func api(path string) (*http.Response, error) {
+  apiUrl, _ := url.Parse(Endpoint + path)
+  req, err := http.Get(apiUrl.String())
+  return req, err
+}
+
+func result(r io.Reader) *Result {
+  ret     := new(Result)
   decoder := json.NewDecoder(r)
-  err := decoder.Decode(&ret)
+  err     := decoder.Decode(&ret)
+
   if err != nil {
     log.Fatalf("Error on parsing result")
   }
+
   if ret.Status != "OK" {
     log.Fatalf("Error on calling web api: %s", ret.Status)
   }
-  return ret.Contests
+
+  return ret
 }
 
 func ContestList() []Contest {
-  req, err := http.Get(api("/contest.list").String())
+  req, err := api("/contest.list")
+
   if err != nil {
     log.Fatalf("Error on HTTP request")
   }
+
   defer req.Body.Close()
-  return result(req.Body)
+  return result(req.Body).Contests
 }
 
 func Hello() string {
