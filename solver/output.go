@@ -1,0 +1,3 @@
+type Output struct {
+}
+

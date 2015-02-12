@@ -1,0 +1,16 @@
+language: ruby
+
+ruby:
+  - "1.9"
+  - "2.0"
+  - "2.1"
+  - "2.2"
+
+sudo: false
+
+install:
+  - gem install social_snippet
+
+script:
+  - cat main.go | ssnip
+
