@@ -9,8 +9,8 @@ ruby:
 sudo: false
 
 install:
-  - gem install social_snippet
+  - bundle install -j4
 
 script:
-  - cat main.go | ssnip
+  - cat main.go | bundle exec ssnip
 
