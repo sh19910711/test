@@ -13,4 +13,5 @@ install:
 
 script:
   - cat main.go | bundle exec ssnip
+  - cat test.go | bundle exec ssnip
 
