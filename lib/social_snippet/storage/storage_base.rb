@@ -2,6 +2,14 @@ module SocialSnippet::Storage
 
   class StorageBase
 
+    def read(path)
+      raise "not implemented"
+    end
+
+    def write(path, data)
+      raise "not implemented"
+    end
+
     def glob(glob_path)
       raise "not implemented"
     end
