@@ -47,7 +47,7 @@ module SocialSnippet::Repository
     end
 
     def create_git_repo(path, ref = nil)
-      ::SocialSnippet::Repository::Drivers::GitRepository.new(path, ref)
+      ::SocialSnippet::Repository::Drivers::GitRepository.new(core, path, ref)
     end
 
     def has_git_dir?(dir_path)
