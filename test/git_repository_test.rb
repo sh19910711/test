@@ -35,7 +35,7 @@ module ::SocialSnippet::Repository
         ]
         rugged_repo
       end
-      @repo = FakeDriver.new("/path/to/repo")
+      @repo = FakeDriver.new(fake_core, "/path/to/repo")
     end
 
     describe "#refs" do

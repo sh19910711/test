@@ -87,7 +87,7 @@ module SocialSnippet::Repository
           ].join($/)
 
           allow(repo_manager).to receive(:find_repository).with("repo_a") do |path|
-            repo = ::SocialSnippet::Repository::Drivers::BaseRepository.new("#{repo_path}/repo_a")
+            repo = ::SocialSnippet::Repository::Drivers::BaseRepository.new(fake_core, "#{repo_path}/repo_a")
             expect(repo).to receive(:commit_id).and_return commit_id
             repo.load_snippet_json
             repo.create_cache repo_manager.repo_cache_path
@@ -145,7 +145,7 @@ module SocialSnippet::Repository
 
         before do
           expect(::SocialSnippet::Repository::Drivers::GitRepository).to receive(:new) do |path|
-            ::SocialSnippet::Repository::Drivers::BaseRepository.new(path)
+            ::SocialSnippet::Repository::Drivers::BaseRepository.new(fake_core, path)
           end
           expect_any_instance_of(::SocialSnippet::Repository::Drivers::BaseRepository).to receive(:commit_id).and_return commit_id
         end
