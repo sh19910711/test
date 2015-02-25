@@ -13,6 +13,10 @@ module SocialSnippet::SpecHelpers
 
   class Fake; end
 
+  def fake_storage
+    @fake_storage ||= ::SocialSnippet::Storage::FileSystemStorage.new
+  end
+
   def fake_io
     @fake_io ||= StringIO.new
   end
@@ -77,6 +81,7 @@ module SocialSnippet::SpecHelpers
 
   def reset_fake_core
     @fake_core = Fake.new
+    allow(fake_core).to receive(:storage).and_return fake_storage
     allow(fake_core).to receive(:logger).and_return fake_logger
     allow(fake_core).to receive(:config).and_return fake_config
     allow(fake_core).to receive(:api).and_return fake_api
