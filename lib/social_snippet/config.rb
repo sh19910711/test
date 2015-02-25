@@ -116,7 +116,7 @@ class SocialSnippet::Config
     core.storage.mkdir_p home
     core.storage.mkdir_p install_path
     core.storage.mkdir_p repository_cache_path
-    core.storage.write file_path, {}.to_json unless ::File.exists?(file_path)
+    core.storage.write file_path, {}.to_json unless core.storage.exists?(file_path)
   end
 
   private
