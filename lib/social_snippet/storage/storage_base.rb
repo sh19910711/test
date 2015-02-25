@@ -26,6 +26,10 @@ module SocialSnippet::Storage
       raise "not implemented"
     end
 
+    def mkdir_p(path)
+      raise "not implemented"
+    end
+
   end
 
 end

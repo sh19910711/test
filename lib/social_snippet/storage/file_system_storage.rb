@@ -26,6 +26,10 @@ module SocialSnippet::Storage
       ::File.directory? path
     end
 
+    def mkdir_p(path)
+      ::FileUtils.mkdir_p path
+    end
+
   end
 
 end
