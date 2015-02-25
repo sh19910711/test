@@ -1,6 +1,6 @@
-module SocialSnippet
+module SocialSnippet::Storage
 
-  class Storage::StorageEntity
+  class StorageEntity
 
     attr_reader :path
 
