@@ -15,21 +15,14 @@ module SocialSnippet::Repository
     end # use dummy api server
 
     let(:config) do
-      ::SocialSnippet::Config.new(social_snippet)
-    end
-
-    let(:social_snippet) do
-      class Fake; end
-      Fake.new
+      ::SocialSnippet::Config.new(fake_core)
     end
 
     before do
-      allow(social_snippet).to receive(:storage).and_return fake_storage
-      allow(social_snippet).to receive(:logger).and_return fake_logger
-      allow(social_snippet).to receive(:config).and_return config
+      allow(fake_core).to receive(:config).and_return config
     end
 
-    let(:repo_manager) { RepositoryManager.new social_snippet }
+    let(:repo_manager) { RepositoryManager.new fake_core }
     let(:commit_id) { "dummycommitid" }
     let(:short_commit_id) { commit_id[0..7] }
 
