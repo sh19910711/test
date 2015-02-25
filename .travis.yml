@@ -21,6 +21,7 @@ script:
   - sspm install example-repo
   - sspm update
   - echo "// @snip <example-repo:func.cpp>" | ssnip
+  - echo "// @snip <path/to/not_found.cpp>" | ssnip
 
 deploy:
   provider: rubygems
