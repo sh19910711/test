@@ -4,6 +4,7 @@ module SocialSnippet::Repository::Drivers
   # usage: class GitRepository < BaseRepository
   class BaseRepository
 
+    attr_reader :core
     attr_reader :path
     attr_reader :cache_path
     attr_reader :name
@@ -17,10 +18,11 @@ module SocialSnippet::Repository::Drivers
     # Constructor
     #
     # @param path [String] The path of repository
-    def initialize(new_path, new_ref = nil)
+    def initialize(new_core, new_path, new_ref = nil)
+      @core = new_core
       @path = new_path
+      @ref  = new_ref
       @cache_path = nil
-      @ref = new_ref
 
       if ( not ref.nil? ) && ( not refs.empty? ) && ( not refs.include?(ref) )
         raise Errors::NotExistRef
