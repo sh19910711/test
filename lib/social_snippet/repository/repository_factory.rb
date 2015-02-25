@@ -1,6 +1,12 @@
-module SocialSnippet::Repository::RepositoryFactory
+module SocialSnippet::Repository
 
-  class << self
+  class RepositoryFactory
+
+    attr_reader :core
+
+    def initialize(new_core)
+      @core = new_core
+    end
 
     def clone(repo_url)
       uri = URI.parse repo_url
@@ -54,6 +60,6 @@ module SocialSnippet::Repository::RepositoryFactory
       return false
     end
 
-  end # class << self
+  end # RepositoryFactory
 
-end # RepositoryFactory
+end # SocialSnippet::Repository
