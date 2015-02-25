@@ -10,6 +10,22 @@ module SocialSnippet::Storage
       ::File.write path, data
     end
 
+    def glob(glob_path)
+      ::Dir.glob glob_path
+    end
+
+    def exists?(path)
+      ::File.exists? path
+    end
+
+    def file?(path)
+      ::File.file? path
+    end
+
+    def directory?(path)
+      ::File.directory? path
+    end
+
   end
 
 end
