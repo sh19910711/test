@@ -4,6 +4,7 @@ sudo: false
 
 install:
   - echo hello
+  - ls /home/travis
   - if [ -f /home/travis/tmp/hello.txt ]; then stat /home/travis/tmp/hello.txt | grep Modify; fi
 
 script:
