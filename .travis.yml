@@ -8,11 +8,11 @@ install:
 
 script:
   - echo world
-  - mkdir -p $HOME/tmp
-  - touch $HOME/tmp/hello.txt
-  - stat $HOME/tmp/hello.txt | grep Modify;
+  - mkdir -p $HOME/test
+  - touch $HOME/test/hello.txt
+  - stat $HOME/test/hello.txt | grep Modify;
 
 cache:
   directories:
-    - $HOME/tmp
+    - $HOME/test
 
