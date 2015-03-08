@@ -14,5 +14,5 @@ script:
 
 cache:
   directories:
-    - $HOME/tmp/
+    - $HOME/tmp
 
