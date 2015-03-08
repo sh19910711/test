@@ -9,6 +9,7 @@ install:
 script:
   - echo world
   - mkdir -p $HOME/foo/bar
+  - date +"%s" > $HOME/foo/bar/hello.txt
   - touch -mt 200904101015 $HOME/foo/bar/hello.txt
   - stat $HOME/foo/bar/hello.txt | grep Modify;
 
