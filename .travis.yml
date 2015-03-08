@@ -4,7 +4,7 @@ sudo: false
 
 install:
   - echo hello
-  - "[ -f $HOME/tmp/hello.txt ] && stat $HOME/tmp/hello.txt | grep Modify;"
+  - if [ -f $HOME/tmp/hello.txt ]; then stat $HOME/tmp/hello.txt | grep Modify fi
 
 script:
   - echo world
