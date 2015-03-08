@@ -7,7 +7,9 @@ install:
 
 script:
   - echo world
+  - mkdir -p $HOME/tmp/
 
 cache:
   directories:
+    - $HOME/tmp/
 
