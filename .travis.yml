@@ -11,7 +11,7 @@ script:
   - echo world
   - mkdir -p /home/travis/foo/bar
   - date +"%s" > /home/travis/foo/bar/hello.txt
-  - touch -mt 200904101015 /home/travis/foo/bar/hello.txt
+  - touch -mt 201604101015 /home/travis/foo/bar/hello.txt
   - stat /home/travis/foo/bar/hello.txt | grep Modify;
 
 cache:
