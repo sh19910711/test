@@ -9,7 +9,7 @@ install:
 script:
   - echo world
   - mkdir -p $HOME/foo/bar
-  - touch $HOME/foo/bar/hello.txt
+  - touch -mt 200904101015 $HOME/foo/bar/hello.txt
   - stat $HOME/foo/bar/hello.txt | grep Modify;
 
 cache:
