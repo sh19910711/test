@@ -1,0 +1,13 @@
+language: c
+
+sudo: false
+
+install:
+  - echo hello
+
+script:
+  - echo world
+
+cache:
+  directories:
+
