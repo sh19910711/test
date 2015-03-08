@@ -5,13 +5,13 @@ sudo: false
 install:
   - echo hello
   - ls /home/travis
-  - if [ -f /home/travis/tmp/hello.txt ]; then stat /home/travis/tmp/hello.txt | grep Modify; fi
+  - if [ -f /home/travis/foo/bar/hello.txt ]; then stat /home/travis/foo/bar/hello.txt | grep Modify; fi
 
 script:
   - echo world
   - mkdir -p /home/travis/foo/bar
   - date +"%s" > /home/travis/foo/bar/hello.txt
-  # - touch -mt 200904101015 /home/travis/foo/bar/hello.txt
+  - touch -mt 200904101015 /home/travis/foo/bar/hello.txt
   - stat /home/travis/foo/bar/hello.txt | grep Modify;
 
 cache:
