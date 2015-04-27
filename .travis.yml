@@ -3,8 +3,9 @@ language: c
 sudo: false
 
 addons:
-  apt_packages:
-    - cmake
+  apt:
+    packages:
+      - cmake
 
 script:
   - cmake --version
