@@ -6,3 +6,6 @@ addons:
   apt_packages:
     - cmake
 
+script:
+  - cmake --version
+
