@@ -74,6 +74,10 @@ module Contest
         @blocks.push(block)
       end
 
+      def debug?
+        options[:debug] === true
+      end
+
       def get_opts
         get_opts_ext()
         define_options do
@@ -94,6 +98,11 @@ module Contest
             "Set git-commit message",
             :type => :string,
             :required => false,
+          )
+          opt(
+            :debug,
+            "Enable Debug Mode",
+            :default => false,
           )
         end
         Trollop::options args, @blocks do |blocks|

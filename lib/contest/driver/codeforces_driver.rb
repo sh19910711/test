@@ -95,6 +95,7 @@ module Contest
         # login
         trigger 'before_login'
         login_page = @client.get 'http://codeforces.com/enter'
+        puts "#DEBUG: login_page = #{login_page.uri}" if debug?
         login_page.form_with(:action => '') do |form|
           form.handle = @config["user"]
           form.password = @config["password"]
@@ -107,11 +108,13 @@ module Contest
         retries = 1
         begin
           submit_page = @client.get "http://codeforces.com/contest/#{contest_id}/submit"
+          puts "#DEBUG: submit_page = #{submit_page.uri}" if debug?
           res_page = submit_page.form_with(:class => 'submit-form') do |form|
             form.submittedProblemIndex = problem_id
             form.programTypeId = @options[:language]
             form.source = File.read(@options[:source])
           end.submit
+          puts "#DEBUG: result_page = #{res_page.uri}" if debug?
         rescue => e
           raise if retries == 0
           retries -= 1
