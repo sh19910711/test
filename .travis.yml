@@ -4,4 +4,5 @@ sudo: false
 
 script:
   - echo hello
+  - emcc --version
 
