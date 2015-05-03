@@ -6,3 +6,8 @@ script:
   - echo hello
   - emcc --version
 
+addon:
+  apt:
+    packages:
+      - emscripten
+
