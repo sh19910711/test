@@ -135,6 +135,12 @@ module Contest
         end
         trigger 'after_submit'
 
+        if error_msg = parse_error(res_page.body)
+          puts "### ERROR ###"
+          puts error_msg
+          puts ""
+          exit 1
+        end
         # need to get the newest waiting submissionId
         submission_id = get_submission_id(res_page.body)
         trigger(
@@ -160,6 +166,16 @@ module Contest
       end
 
       private
+
+      def parse_error(body)
+        doc = Nokogiri::HTML(body)
+        doc.xpath('//span[contains(@class, "error for__")]').map do |e|
+          e.text.gsub(/ /, " ").strip
+        end.find do |text|
+          not text.empty?
+        end
+      end
+
       def get_status_wait(contest_id, submission_id)
         contest_id = contest_id.to_s
         submission_id = submission_id.to_s
