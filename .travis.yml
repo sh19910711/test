@@ -12,5 +12,5 @@ env:
 sudo: false
 
 script:
-  - [[ `ruby -v` =~ ^jruby ]] && echo THIS IS NOT JRUBY
+  - if [[ `ruby -v` =~ ^jruby ]]; then echo THIS IS NOT JRUBY; fi
 
