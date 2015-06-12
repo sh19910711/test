@@ -1,0 +1,16 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+  - 2.2
+  - jruby
+
+env:
+  global:
+    - JRUBY_OPTS=--dev
+
+sudo: false
+
+script:
+  - [[ `ruby -v` =~ ^jruby ]] && echo THIS IS NOT JRUBY
+
