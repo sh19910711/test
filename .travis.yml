@@ -1,0 +1,7 @@
+language: c
+
+script:
+  - echo hello
+  - mkdir -p hello
+  - cd hello
+  - pwd
