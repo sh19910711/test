@@ -3,6 +3,13 @@ machine:
     - docker
 test:
   override:
+    - if [[ -e vendor/docker/image.tar ]]; then docker load -i vendor/docker/image.tar; fi
     - docker --version
+    - mkdir -p vendor/docker
     - docker build -t arch .
+    - docker save arch > vendor/docker/image.tar
     - docker run -w /workspace -v `pwd`:/workspace -t arch makepkg
+
+dependencies:
+  cache_directories:
+    - vendor/docker
