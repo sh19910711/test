@@ -1,4 +1,3 @@
 test:
   override:
-    - ehco hello
     - docker --version
