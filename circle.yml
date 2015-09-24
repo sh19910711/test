@@ -5,3 +5,4 @@ test:
   override:
     - docker --version
     - docker build -t arch .
+    - docker run -w /workspace -v `pwd`:/workspace -t arch makepkg
