@@ -1,0 +1,4 @@
+name=my-vim
+
+build() {
+}

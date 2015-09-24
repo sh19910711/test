@@ -1,3 +1,4 @@
 test:
   override:
     - docker --version
+    - docker build -t arch .
