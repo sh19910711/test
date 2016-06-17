@@ -1,0 +1,3 @@
+[submodule "emu-server"]
+	path = emu-server
+	url = https://github.com/codestand/emu-server
