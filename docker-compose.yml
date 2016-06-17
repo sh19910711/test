@@ -1,0 +1,4 @@
+version: '2'
+services:
+  emu:
+    build: emu-server
