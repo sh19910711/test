@@ -19,7 +19,7 @@ before_install:
   - apt-cache madison docker-engine
 
   # upgrade docker-engine to specific version
-  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=${DOCKER_VERSION}
+  - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=$(apt-cache madison docker-engine | grep ${DOCKER_VERSION} | head -n 1 | awk '{print $3}')
 
   # reinstall docker-compose at specific version
   - sudo rm /usr/local/bin/docker-compose
