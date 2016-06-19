@@ -1,0 +1,15 @@
+language: bash
+
+git:
+  submodules: false
+
+sudo: required # to run docker
+
+services:
+  - docker
+
+install:
+  - bash script/convert.bash
+
+script:
+  - sudo docker-compose build
