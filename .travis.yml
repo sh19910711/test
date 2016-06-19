@@ -1,6 +1,7 @@
 language: bash
 
 git:
+  depth: 1
   submodules: false
 
 sudo: required # to run docker
@@ -9,6 +10,8 @@ services:
   - docker
 
 install:
+  - ls -lha
+  - ls -lha emu-server
   - bash script/convert.bash
 
 script:
