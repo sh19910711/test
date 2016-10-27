@@ -1,5 +1,7 @@
 language: bash
 sudo: required
+services:
+- mysql
 script:
 - ls /var/run/mysqld
 - mysql -uroot -e 'create database hello;';
