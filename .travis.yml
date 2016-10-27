@@ -1,13 +1,15 @@
 language: bash
 sudo: required
 services:
+- docker
 - mysql
+- postgresql
 before_install:
 - ls /var/run/mysqld
-- mysql -uroot -e 'create database hello1;';
-- mysql -u root -e 'create database hello2;';
+- mysql -uroot -e 'create database hello1;'
+- mysql -u root -e 'create database hello2;'
 script:
 - ls /var/run/mysqld
-- mysql -uroot -e 'create database hello3;';
-- mysql -u root -e 'create database hello4;';
+- mysql -uroot -e 'create database hello3;'
+- mysql -u root -e 'create database hello4;'
 - mysql -e 'create datbase hello;'
