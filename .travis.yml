@@ -4,7 +4,6 @@ services:
 - mysql
 before_install:
 - ls /var/run/mysqld
-- mysql -uroot -e 
 - mysql -uroot -e 'create database hello1;';
 - mysql -u root -e 'create database hello2;';
 script:
