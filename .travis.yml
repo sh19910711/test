@@ -1,0 +1,6 @@
+language: bash
+sudo: required
+script:
+- ls /var/run/mysqld
+- mysql -uroot -e 'create database hello;';
+- mysql -e 'create datbase hello;'
