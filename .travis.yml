@@ -1,7 +1,6 @@
 language: bash
 sudo: required
 services:
-- docker
 - mysql
 - postgresql
 before_install:
