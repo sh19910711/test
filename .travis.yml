@@ -14,7 +14,10 @@ script:
   - rm -rf /tmp/led-blink
   - ls -lha /tmp
 
+  - docker run -t -v /tmp:/app codestand/baseos ls -lha /app
   - sudo mount -t tmpfs -o nosuid,nodev tmpfs /tmp
+  - docker run -t -v /tmp:/app codestand/baseos ls -lha /app
+
   - ls -lha /tmp
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
   - ls -lha /tmp/led-blink
