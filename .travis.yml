@@ -6,6 +6,7 @@ services:
 script:
   - docker info
   - df -h
+  - mount
 
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
   - ls -lha /tmp/led-blink
