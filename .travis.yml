@@ -14,7 +14,7 @@ script:
   - rm -rf /tmp/led-blink
   - ls -lha /tmp
 
-  - sudo mount -t tmpfs tmpfs /tmp
+  - sudo mount -t tmpfs -o nosuid,nodev tmpfs /tmp
   - ls -lha /tmp
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
   - ls -lha /tmp/led-blink
