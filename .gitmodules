@@ -1,0 +1,3 @@
+[submodule "baseos"]
+	path = baseos
+	url = https://github.com/codestand/baseos.git
