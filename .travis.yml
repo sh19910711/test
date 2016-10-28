@@ -5,6 +5,7 @@ services:
 
 script:
   - docker info
+  - df -h
   - ls -lha /mnt
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
   - chmod 0700 /tmp/led-blink
