@@ -1,0 +1,9 @@
+language: bash
+sudo: required
+services:
+  - docker
+
+script:
+  - cp -r ./baseos/examples/led-blink /tmp/led-blink
+  - chmod 0700 /tmp/led-blink
+  - docker run -t -v /tmp/led-blink:/app codestand/baseos
