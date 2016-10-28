@@ -6,12 +6,14 @@ services:
 script:
   - docker info
   - df -h
-  - ls -lha /mnt
+  - ls -lha /tmp && ls -lha /tmp/led-blink
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
-  - chmod 0700 /tmp/led-blink
+  - ls -lha /tmp && ls -lha /tmp/led-blink
   - docker run -t -v /tmp/led-blink:/app codestand/baseos
+  - rm -r /tmp/led-blink
+  - ls -lha /tmp && ls -lha /tmp/led-blink
   - sudo mount -t tmpfs tmpfs /tmp
-  - ls -lha /tmp
+  - ls -lha /tmp && ls -lha /tmp/led-blink
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
-  - ls -lha /tmp
+  - ls -lha /tmp && ls -lha /tmp/led-blink
   - docker run -t -v /tmp/led-blink:/app codestand/baseos
