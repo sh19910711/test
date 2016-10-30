@@ -16,11 +16,15 @@ script:
   - ls -lha /tmp
 
   - docker run -t -v /tmp:/app codestand/baseos ls -lha /app
-  - sudo mount -t tmpfs -o nosuid,nodev tmpfs /tmp
+  - sudo mkdir /mnt/tmpfs
+  - sudo chmod 1777 /mnt/tmpfs
+  - sudo mount --bind /mnt/tmpfs /tmp
   - docker run -t -v /tmp:/app codestand/baseos ls -lha /app
 
   - ls -lha /tmp
   - cp -r ./baseos/examples/led-blink /tmp/led-blink
+  - ls -lha /mnt/tmpfs
   - ls -lha /tmp/led-blink
   - docker run -t -v /tmp/led-blink:/app codestand/baseos
+  - docker run -t -v /tmp:/app codestand/baseos ls -lha /app
   - docker run -t -v /tmp/led-blink:/app codestand/baseos ls -lha /app
