@@ -1,5 +1,5 @@
 foo 'bar' do
-# query
+  # query
   query <<-SQL
     SELECT
       something
@@ -8,4 +8,18 @@ foo 'bar' do
     WHERE
       hello = 'world'
   SQL
+end
+
+foo 'html' do
+  html <<-HTML
+    <!doctype html>
+    <html>
+      <head>
+        <title>Hello</title>
+      </head>
+      <body>
+        <h1>Hello</h1>
+      </body>
+    </html>
+  HTML
 end
