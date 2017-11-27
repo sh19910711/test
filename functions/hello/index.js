@@ -20,7 +20,7 @@ exports.handle = (event, context, callback) => {
         Key: key
       },
       PipelineId: '1511814545326-jwbyte', 
-      OutputKeyPrefix: 'audio',
+      OutputKeyPrefix: 'audios/',
       Outputs: [
         {
           SegmentDuration:'10.0',    
