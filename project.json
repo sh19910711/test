@@ -1,0 +1,8 @@
+{
+  "name": "s3-invoke-transcoder",
+  "description": "s3 video to s3 audio",
+  "memory": 128,
+  "timeout": 5,
+  "role": "arn:aws:iam::998190629757:role/s3-invoke-transcoder_lambda_function",
+  "environment": {}
+}
