@@ -19,8 +19,8 @@ exports.handler = (event, context, callback) => {
       Input: { 
         Key: key
       },
-      PipelineId: '[USE YOUR PIPELINE ID]', 
-      OutputKeyPrefix: '[OUT PUT KEY PREFIX ex. `iphone/`]',
+      PipelineId: '1511814545326-jwbyte', 
+      OutputKeyPrefix: 'audio',
       Outputs: [
         {
           SegmentDuration:'10.0',    
