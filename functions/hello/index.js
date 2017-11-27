@@ -10,7 +10,7 @@ function getFileName(path) {
    return path.split('/').reverse()[0].split('.')[0];
 }
 
-exports.handler = (event, context, callback) => {
+exports.index = (event, context, callback) => {
 
     const bucket = event.Records[0].s3.bucket.name;
     const key = decodeURIComponent(event.Records[0].s3.object.key.replace(/\+/g, ' '));
