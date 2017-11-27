@@ -23,8 +23,7 @@ exports.handle = (event, context, callback) => {
       OutputKeyPrefix: 'audios/',
       Outputs: [
         {
-          SegmentDuration:'10.0',    
-          Key: getFileName(key),
+          Key: getFileName(key) + ".mp3",
           PresetId: '1351620000001-300010' // Audio MP3 - 320 k
         }
       ]
