@@ -25,7 +25,7 @@ exports.handler = (event, context, callback) => {
         {
           SegmentDuration:'10.0',    
           Key: getFileName(key),
-          PresetId: '[PRESETID ex `1351620000001-200060`]', // hls
+          PresetId: '1351620000001-300010' // Audio MP3 - 320 k
         }
       ]
     };
