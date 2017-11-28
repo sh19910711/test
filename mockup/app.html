@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Transcribable Video Reviewer</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<style>
+* { font-family: 'Open Sans' }
+body { margin-top: 12px; margin-bottom: 200px }
+hr { margin-bottom: 36px }
+</style>
+  </head>
+
+  <body>
+    <div class="container">
+      <p style="float:right"><img src="tmp/thron.png" height="72px" /> <img height="72px" src="tmp/aws.png" /></p>
+      <h1>▶︎▶︎▶︎ Keyword Seekable<br> Video Player</h1>
+      <p>The web server would be working on the local intranet.</p>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <hr class="container">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-7">
+          <video preload id="player" width="100%" controls>
+            <source src="tmp/products.mp4" type="video/mp4"></source>
+          </video>
+          <p>We can seek the video by clicking the transcript</p>
+        </div>
+
+        <div class="col-sm-5">
+          <div class="form-inline">
+            <input id="search-keyword" class="form-control" type="" placeholder="keyword">
+            <button id="search-button" class="btn btn-primary">Search</button>
+          </div>
+          <table class="table table-hover">
+            <thead><tr><th>Time</th><th>Transcript</th></tr></thead>
+            <tbody id="transcripts">
+            </tbody>
+          </table>
+          <hr>
+        </div>
+        <script>
+          document.getElementById('search-button').addEventListener('click', ev => {
+            const keyword = document.getElementById('search-keyword').value;
+            Array.prototype.forEach.call(document.getElementsByClassName('transcript'), tr => {
+              tr.hidden = !(tr.innerText.indexOf(keyword) != -1);
+            })
+          })
+          window.onload = function() {
+            const table = document.getElementById('transcripts');
+            const player = document.getElementById('player');
+            player.play();
+
+            fetch('./tmp/transcript.json?2').then(res => res.json()).then(json => {
+              json.results.forEach(res => {
+                const el = document.createElement('tr');
+                el.className = 'transcript';
+                el.style = 'cursor: pointer;';
+                el.innerHTML = `<td>${res['alternatives'][0]['timestamps'][0][1]}</td><td>${res['alternatives'][0]['transcript']}</td>`;
+                el.addEventListener('click', (ev) => {
+                  player.currentTime = parseFloat(el.getElementsByTagName('td')[0].innerText);
+                })
+                table.appendChild(el);
+              })
+            })
+          };
+        </script>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  </body>
+</html>
